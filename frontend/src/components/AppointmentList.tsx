@@ -10,7 +10,14 @@ const AppointmentList: React.FC = () => {
   useEffect(() => {
     getAppointments()
       .then(data => setAppointments(data))
-      .catch(() => setError('Error al cargar las citas'))
+      .catch((err) => {
+        // Mostrar el error real si existe
+        if (err instanceof Error && err.message) {
+          setError(`Error al cargar las citas: ${err.message}`);
+        } else {
+          setError('Error al cargar las citas');
+        }
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -20,13 +27,17 @@ const AppointmentList: React.FC = () => {
   return (
     <div>
       <h2>Listado de Citas</h2>
-      <ul>
-        {appointments.map(app => (
-          <li key={app.id}>
-            {app.name} - {app.date} {app.time} - Estado: {app.status}
-          </li>
-        ))}
-      </ul>
+      {appointments.length === 0 ? (
+        <p>No hay citas en estos momentos</p>
+      ) : (
+        <ul>
+          {appointments.map(app => (
+            <li key={app.id}>
+              {app.name} - {app.date} {app.time} - Estado: {app.status}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
