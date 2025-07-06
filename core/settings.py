@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'backend.apps.store',
     'backend.apps.appointments',
     'backend.apps.testimonials',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
