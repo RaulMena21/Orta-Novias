@@ -1,3 +1,5 @@
+# Usar el modelo User personalizado
+AUTH_USER_MODEL = 'users.User'
 """
 Django settings for core project.
 
@@ -40,6 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'backend.apps.users',
+    'backend.apps.store',
+    'backend.apps.appointments',
+    'backend.apps.testimonials',
 ]
 
 MIDDLEWARE = [
