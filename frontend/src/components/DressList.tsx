@@ -21,7 +21,7 @@ const DressList: React.FC = () => {
   }, []);
 
   if (loading) return <p>Cargando vestidos...</p>;
-  if (error) return <p style={{color: 'red'}}>{error}</p>;
+  if (error) return <p className="text-red-600">{error}</p>;
 
   return (
     <div>
@@ -31,9 +31,9 @@ const DressList: React.FC = () => {
       ) : (
         <ul>
           {dresses.map(dress => (
-            <li key={dress.id} style={{marginBottom: '1.5em'}}>
+            <li key={dress.id} className="mb-6">
               <strong>{dress.name}</strong> ({dress.style})<br />
-              <img src={dress.image} alt={dress.name} style={{maxWidth: 200, display: 'block', margin: '0.5em 0'}} />
+              <img src={dress.image} alt={dress.name} className="max-w-[200px] block my-2" />
               <span>{dress.description}</span>
               <div>Disponible: {dress.available ? 'Sí' : 'No'}</div>
             </li>

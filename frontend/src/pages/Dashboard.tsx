@@ -1,24 +1,19 @@
-
 import React from 'react';
 
-import AppointmentList from '../components/AppointmentList';
-import TestimonialList from '../components/TestimonialList';
-import DressList from '../components/DressList';
-import { logout } from '../services/logout';
+
+
+
 
 
 const Dashboard: React.FC = () => {
   return (
-    <div>
-      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1>Bienvenido al Dashboard</h1>
-        <button onClick={logout} style={{ padding: '0.5em 1em', cursor: 'pointer' }}>Cerrar sesión</button>
-      </header>
-      <AppointmentList />
-      <hr style={{margin: '2em 0'}} />
-      <TestimonialList />
-      <hr style={{margin: '2em 0'}} />
-      <DressList />
+    <div className="min-h-[70vh] flex flex-col items-center justify-center px-4 py-12 bg-[#FAF6EE]">
+      <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#8A2E3B] font-serif tracking-tight text-center drop-shadow-sm italic">
+        Bienvenida a tu Panel de Control
+      </h1>
+      <p className="text-lg md:text-xl text-[#A13347] text-center max-w-xl mb-2 italic">
+        Aquí puedes gestionar tus citas, vestidos y testimonios.
+      </p>
     </div>
   );
 };

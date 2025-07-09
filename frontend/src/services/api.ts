@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import { refreshToken } from './auth';
 
@@ -39,10 +38,9 @@ api.interceptors.response.use(
         }
         return api(originalRequest);
       } catch (refreshError) {
-        // Si falla el refresh, limpiar tokens y redirigir a login
+        // Si falla el refresh, limpiar tokens
         localStorage.removeItem('access');
         localStorage.removeItem('refresh');
-        window.location.href = '/login';
         return Promise.reject(refreshError);
       }
     }

@@ -22,7 +22,7 @@ const AppointmentList: React.FC = () => {
   }, []);
 
   if (loading) return <p>Cargando citas...</p>;
-  if (error) return <p style={{color: 'red'}}>{error}</p>;
+  if (error) return <p className="text-red-600">{error}</p>;
 
   return (
     <div>

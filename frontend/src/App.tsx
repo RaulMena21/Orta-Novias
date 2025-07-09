@@ -1,26 +1,39 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import './App.css'
-import LoginPage from './pages/LoginPage';
+import Navbar from './components/Navbar';
 import Dashboard from './pages/Dashboard';
+import HomePage from './pages/HomePage';
+import DressesPage from './pages/DressesPage';
+import TestimonialsPage from './pages/TestimonialsPage';
+import AppointmentsPage from './pages/AppointmentsPage';
+import NotFoundPage from './pages/NotFoundPage';
+
 
 function PrivateRoute({ children }: { children: React.ReactElement }) {
   const isAuth = Boolean(localStorage.getItem('access'));
   return isAuth ? children : <Navigate to="/login" />;
 }
 
+
+
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/dashboard" element={
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        } />
-        {/* Otras rutas aquí */}
-      </Routes>
+      <Navbar />
+      <div className="max-w-4xl mx-auto px-4 py-6 pt-20">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/dashboard" element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          } />
+          <Route path="/vestidos" element={<DressesPage />} />
+          <Route path="/testimonios" element={<TestimonialsPage />} />
+          <Route path="/citas" element={<AppointmentsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </div>
     </Router>
   )
 }

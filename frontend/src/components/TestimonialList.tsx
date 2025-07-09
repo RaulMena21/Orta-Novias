@@ -21,7 +21,7 @@ const TestimonialList: React.FC = () => {
   }, []);
 
   if (loading) return <p>Cargando testimonios...</p>;
-  if (error) return <p style={{color: 'red'}}>{error}</p>;
+  if (error) return <p className="text-red-600">{error}</p>;
 
   return (
     <div>
@@ -31,9 +31,9 @@ const TestimonialList: React.FC = () => {
       ) : (
         <ul>
           {testimonials.map(t => (
-            <li key={t.id} style={{marginBottom: '1.5em'}}>
+            <li key={t.id} className="mb-6">
               <strong>{t.bride_name}</strong> ({t.wedding_date})<br />
-              <img src={t.image} alt={t.bride_name} style={{maxWidth: 200, display: 'block', margin: '0.5em 0'}} />
+              <img src={t.image} alt={t.bride_name} className="max-w-[200px] block my-2" />
               <span>{t.testimonial}</span>
             </li>
           ))}
