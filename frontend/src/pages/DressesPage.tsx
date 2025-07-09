@@ -106,10 +106,10 @@ const DressesPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#FAF7F4]">
       {/* Hero Section */}
-      <section className="relative h-[40vh] md:h-[50vh] bg-gradient-to-r from-[#F8F5F2] via-[#FAF7F4] to-[#F8F5F2] flex items-center justify-center">
-        <div className="absolute inset-0 bg-black/20"></div>
+      <section className="relative h-[40vh] md:h-[50vh] bg-gradient-to-br from-[#FAF7F4] via-[#F5F0E8] to-[#F8F5F2] flex items-center justify-center">
+        <div className="absolute inset-0 bg-[#8A2E3B]/5"></div>
         <div className="relative z-10 text-center px-4 py-8 md:py-15 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-[#8A2E3B] mb-4 md:mb-6 tracking-tight">
             Catálogo de Vestidos
@@ -118,17 +118,11 @@ const DressesPage: React.FC = () => {
             Descubre nuestra colección exclusiva. El vestido de tus sueños te está esperando.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              to="/appointments"
-              className="px-8 py-4 bg-[#8A2E3B] text-white text-lg font-semibold rounded-lg shadow-lg hover:bg-[#A13347] transform hover:scale-105 transition-all duration-300"
-            >
-              Agendar Cita
-            </Link>
             <button 
               onClick={() => setShowFilters(!showFilters)}
               className="px-8 py-4 border-2 border-[#D4B483] text-[#8A2E3B] text-lg font-semibold rounded-lg hover:bg-[#D4B483] hover:text-white transform hover:scale-105 transition-all duration-300"
             >
-              <Filter className="w-5 h-5 inline mr-2" />
+              <Filter className="w-8 h-5 inline mr-2" />
               Filtros
             </button>
           </div>

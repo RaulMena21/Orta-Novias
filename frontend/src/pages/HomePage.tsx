@@ -1,14 +1,60 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, Heart, Clock, Phone, Mail, MapPin, Award, Instagram, Facebook, Users, Gift, Camera } from 'lucide-react';
+import { Star, Heart, Clock, Phone, Mail, MapPin, Users, Gift, Camera } from 'lucide-react';
 
 const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center bg-gradient-to-r from-[#F8F5F2] via-[#FAF7F4] to-[#F8F5F2]">
-        <div className="absolute inset-0 bg-black/10 z-0"></div>
-        <div className="relative z-10 text-center px-4 w-full max-w-6xl mx-auto flex flex-col space-y-8">
+      <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
+        {/* Fondo base con gradiente complejo */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FAF7F4] via-[#F8F5F2] to-[#F5F0E8]"></div>
+        
+        {/* Capas decorativas */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#D4B483]/10 via-transparent to-[#8A2E3B]/5"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#8A2E3B]/5 via-transparent to-[#D4B483]/10"></div>
+        
+        {/* Elementos decorativos - Círculos */}
+        <div className="absolute top-10 left-10 w-32 h-32 bg-[#D4B483]/20 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute top-20 right-20 w-24 h-24 bg-[#8A2E3B]/15 rounded-full blur-lg animate-pulse delay-300"></div>
+        <div className="absolute bottom-20 left-20 w-40 h-40 bg-[#D4B483]/10 rounded-full blur-2xl animate-pulse delay-700"></div>
+        <div className="absolute bottom-10 right-10 w-20 h-20 bg-[#8A2E3B]/20 rounded-full blur-lg animate-pulse delay-500"></div>
+        
+        {/* Elementos decorativos - Formas geométricas con movimiento */}
+        <div className="absolute top-1/4 left-1/4 w-6 h-6 bg-[#D4B483]/30 rotate-45 blur-sm animate-bounce duration-3000"></div>
+        <div className="absolute top-1/3 right-1/3 w-4 h-4 bg-[#8A2E3B]/25 rotate-45 blur-sm animate-bounce delay-1000 duration-3000"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-8 h-8 bg-[#D4B483]/20 rotate-45 blur-sm animate-bounce delay-2000 duration-3000"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-5 h-5 bg-[#8A2E3B]/30 rotate-45 blur-sm animate-bounce delay-1500 duration-3000"></div>
+        
+        {/* Patrón de puntos decorativos */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-16 left-16 w-2 h-2 bg-[#D4B483] rounded-full"></div>
+          <div className="absolute top-24 left-32 w-1.5 h-1.5 bg-[#8A2E3B] rounded-full"></div>
+          <div className="absolute top-32 left-24 w-1 h-1 bg-[#D4B483] rounded-full"></div>
+          <div className="absolute top-40 left-40 w-2 h-2 bg-[#8A2E3B] rounded-full"></div>
+          
+          <div className="absolute top-20 right-20 w-1.5 h-1.5 bg-[#D4B483] rounded-full"></div>
+          <div className="absolute top-36 right-32 w-2 h-2 bg-[#8A2E3B] rounded-full"></div>
+          <div className="absolute top-44 right-16 w-1 h-1 bg-[#D4B483] rounded-full"></div>
+          <div className="absolute top-52 right-40 w-1.5 h-1.5 bg-[#8A2E3B] rounded-full"></div>
+          
+          <div className="absolute bottom-20 left-24 w-2 h-2 bg-[#D4B483] rounded-full"></div>
+          <div className="absolute bottom-32 left-40 w-1 h-1 bg-[#8A2E3B] rounded-full"></div>
+          <div className="absolute bottom-40 left-16 w-1.5 h-1.5 bg-[#D4B483] rounded-full"></div>
+          
+          <div className="absolute bottom-24 right-24 w-1.5 h-1.5 bg-[#8A2E3B] rounded-full"></div>
+          <div className="absolute bottom-36 right-16 w-2 h-2 bg-[#D4B483] rounded-full"></div>
+          <div className="absolute bottom-44 right-36 w-1 h-1 bg-[#8A2E3B] rounded-full"></div>
+        </div>
+        
+        {/* Efectos de luz suave */}
+        <div className="absolute top-0 left-1/4 w-1/2 h-full bg-gradient-to-b from-white/10 to-transparent blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-1/3 h-2/3 bg-gradient-to-t from-[#D4B483]/5 to-transparent blur-2xl"></div>
+        
+        {/* Overlay final suave */}
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-[#8A2E3B]/5"></div>
+        
+        <div className="relative z-20 text-center px-4 w-full max-w-6xl mx-auto flex flex-col space-y-8">
           <h1 className="text-6xl md:text-8xl lg:text-8xl font-serif font-bold text-[#D4B483] tracking-tight drop-shadow-lg leading-none">
             Orta Novias
           </h1>
@@ -190,7 +236,7 @@ const HomePage: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="text-center bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="w-16 h-16 bg-[#8A2E3B] rounded-full flex items-center justify-center mx-auto mb-6">
                 <Gift className="w-8 h-8 text-white" />
@@ -215,13 +261,6 @@ const HomePage: React.FC = () => {
               <p className="text-gray-600">Complementa tu look con nuestra selección de velos, joyas y zapatos.</p>
             </div>
             
-            <div className="text-center bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-[#8A2E3B] rounded-full flex items-center justify-center mx-auto mb-6">
-                <Award className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-[#8A2E3B]">Experiencia VIP</h3>
-              <p className="text-gray-600">Atención premium con champagne y ambiente exclusivo para ti y tus acompañantes.</p>
-            </div>
           </div>
         </div>
       </section>
@@ -248,7 +287,7 @@ const HomePage: React.FC = () => {
                     <MapPin className="w-6 h-6 text-[#D4B483] mr-4" />
                     <div>
                       <div className="font-semibold text-[#8A2E3B]">Dirección</div>
-                      <div className="text-gray-600">Calle Principal 123, Centro Histórico</div>
+                      <div className="text-gray-600">Calle Gorrion 13, Puerto Serrano</div>
                     </div>
                   </div>
                   
@@ -256,7 +295,7 @@ const HomePage: React.FC = () => {
                     <Phone className="w-6 h-6 text-[#D4B483] mr-4" />
                     <div>
                       <div className="font-semibold text-[#8A2E3B]">Teléfono</div>
-                      <div className="text-gray-600">+34 123 456 789</div>
+                      <div className="text-gray-600">+34 123 456 789 <br />+34 987 654 321</div>
                     </div>
                   </div>
                   
@@ -272,22 +311,12 @@ const HomePage: React.FC = () => {
                     <Clock className="w-6 h-6 text-[#D4B483] mr-4" />
                     <div>
                       <div className="font-semibold text-[#8A2E3B]">Horarios</div>
-                      <div className="text-gray-600">Lun-Sáb: 10:00-20:00</div>
-                      <div className="text-gray-600">Dom: 11:00-15:00</div>
+                      <div className="text-gray-600">Lun-Sáb: 09:00-14:00/17:00-21:00</div>
                     </div>
                   </div>
                 </div>
                 
-                <div className="mt-8 pt-8 border-t border-gray-200">
-                  <div className="flex items-center space-x-4">
-                    <a href="#" className="p-3 bg-[#8A2E3B] text-white rounded-full hover:bg-[#A13347] transition-colors">
-                      <Instagram className="w-5 h-5" />
-                    </a>
-                    <a href="#" className="p-3 bg-[#8A2E3B] text-white rounded-full hover:bg-[#A13347] transition-colors">
-                      <Facebook className="w-5 h-5" />
-                    </a>
-                  </div>
-                </div>
+    
               </div>
             </div>
             
@@ -304,77 +333,12 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Real Brides Gallery */}
-      <section className="py-20 bg-[#F8F5F2]">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-[#8A2E3B]">
-              Galería de Novias Reales
-            </h2>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              Cada novia es única y especial. Descubre cómo nuestros vestidos cobran vida en el día más importante.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-              <div key={item} className="aspect-square bg-gradient-to-br from-[#D4B483] to-[#C4A373] rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center">
-                <Camera className="w-8 h-8 text-white" />
-              </div>
-            ))}
-          </div>
-          
-          <div className="text-center">
-            <button className="px-6 py-3 border-2 border-[#D4B483] text-[#8A2E3B] font-semibold rounded-lg hover:bg-[#D4B483] hover:text-white transition-all duration-300">
-              Ver Más Fotos
-            </button>
-          </div>
-        </div>
-      </section>
-      {/* Trust Details */}
-      <section className="py-16 bg-[#F8F5F2] border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="w-16 h-16 bg-[#8A2E3B] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-8 h-8 text-white" />
-              </div>
-              <div className="font-semibold text-[#8A2E3B] mb-2">Premio Excelencia</div>
-              <div className="text-sm text-gray-600">Mejor Boutique 2023</div>
-            </div>
-            
-            <div>
-              <div className="w-16 h-16 bg-[#8A2E3B] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-white" />
-              </div>
-              <div className="font-semibold text-[#8A2E3B] mb-2">Familia Local</div>
-              <div className="text-sm text-gray-600">25+ Años en la Ciudad</div>
-            </div>
-            
-            <div>
-              <div className="w-16 h-16 bg-[#8A2E3B] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Star className="w-8 h-8 text-white" />
-              </div>
-              <div className="font-semibold text-[#8A2E3B] mb-2">5 Estrellas</div>
-              <div className="text-sm text-gray-600">Google & Facebook</div>
-            </div>
-            
-            <div>
-              <div className="w-16 h-16 bg-[#8A2E3B] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-8 h-8 text-white" />
-              </div>
-              <div className="font-semibold text-[#8A2E3B] mb-2">Garantía Total</div>
-              <div className="text-sm text-gray-600">Satisfacción 100%</div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="bg-[#8A2E3B] text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div className="col-span-1 md:col-span-1 text-center md:text-left">
               <h3 className="text-2xl font-serif font-bold mb-4">Orta Novias</h3>
               <p className="text-gray-300 mb-4">
                 Tu boutique de confianza para el día más especial de tu vida. 
@@ -382,47 +346,48 @@ const HomePage: React.FC = () => {
               </p>
             </div>
             
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Navegación</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li><Link to="/" className="hover:text-white transition-colors">Inicio</Link></li>
-                <li><Link to="/dresses" className="hover:text-white transition-colors">Vestidos</Link></li>
-                <li><Link to="/appointments" className="hover:text-white transition-colors">Citas</Link></li>
-                <li><Link to="/testimonials" className="hover:text-white transition-colors">Testimonios</Link></li>
-              </ul>
+            <div className="grid grid-cols-2 gap-8 md:contents">
+              <div className="md:col-span-1 md:pl-8">
+                <h4 className="text-lg font-semibold mb-4">Navegación</h4>
+                <ul className="space-y-2 text-gray-300">
+                  <li><Link to="/" className="hover:text-white transition-colors">Inicio</Link></li>
+                  <li><Link to="/dresses" className="hover:text-white transition-colors">Vestidos</Link></li>
+                  <li><Link to="/appointments" className="hover:text-white transition-colors">Citas</Link></li>
+                  <li><Link to="/testimonials" className="hover:text-white transition-colors">Testimonios</Link></li>
+                </ul>
+              </div>
+              
+              <div className="md:col-span-1">
+                <h4 className="text-lg font-semibold mb-4">Contacto</h4>
+                <div className="space-y-2 text-gray-300">
+                  <div className="flex items-center">
+                    <MapPin className="w-4 h-4 mr-2" />
+                    <span>Calle Gorrion Nº13</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Phone className="w-4 h-4 mr-2" />
+                    <span>+34 123 456 789 <br />+34 123 456 789 </span>
+                  </div>
+                  <div className="flex items-center">
+                    <Mail className="w-4 h-4 mr-2" />
+                    <span>info@ortanovias.com</span>
+                  </div>
+                </div>
+              </div>
             </div>
             
-            <div>
+            <div className="hidden md:block md:col-span-1">
               <h4 className="text-lg font-semibold mb-4">Servicios</h4>
               <ul className="space-y-2 text-gray-300">
                 <li>Asesoría Personalizada</li>
                 <li>Ajustes Profesionales</li>
                 <li>Accesorios Exclusivos</li>
-                <li>Experiencia VIP</li>
               </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Contacto</h4>
-              <div className="space-y-2 text-gray-300">
-                <div className="flex items-center">
-                  <MapPin className="w-4 h-4 mr-2" />
-                  <span>Calle Principal 123</span>
-                </div>
-                <div className="flex items-center">
-                  <Phone className="w-4 h-4 mr-2" />
-                  <span>+34 123 456 789</span>
-                </div>
-                <div className="flex items-center">
-                  <Mail className="w-4 h-4 mr-2" />
-                  <span>info@ortanovias.com</span>
-                </div>
-              </div>
             </div>
           </div>
           
           <div className="border-t border-white/20 pt-8 text-center text-gray-300">
-            <p>&copy; 2024 Orta Novias. Todos los derechos reservados. | Diseñado con ❤️ para novias únicas.</p>
+            <p>&copy; 2025 Orta Novias. Todos los derechos reservados. | Diseñado con ❤️ para novias únicas.</p>
           </div>
         </div>
       </footer>

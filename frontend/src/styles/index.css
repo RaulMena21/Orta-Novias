@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fondo global para toda la página incluyendo columnas laterales */
+html, body {
+  background-color: #FAF7F4;
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
