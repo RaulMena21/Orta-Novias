@@ -7,33 +7,8 @@ import { MobileMenu } from "./MobileMenu";
 
 const Navbar: React.FC = () => {
   const location = useLocation();
-  const [isVisible, setIsVisible] = React.useState(true);
-  const [lastScrollY, setLastScrollY] = React.useState(0);
-
-  React.useEffect(() => {
-    const controlNavbar = () => {
-      if (typeof window !== 'undefined') {
-        if (window.scrollY > lastScrollY && window.scrollY > 100) {
-          // Scrolling down
-          setIsVisible(false);
-        } else {
-          // Scrolling up
-          setIsVisible(true);
-        }
-        setLastScrollY(window.scrollY);
-      }
-    };
-
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', controlNavbar);
-      return () => {
-        window.removeEventListener('scroll', controlNavbar);
-      };
-    }
-  }, [lastScrollY]);
-
   return (
-    <nav className={`w-full bg-[#FAF6EE] border-b-2 border-[#D4B483] shadow-soft px-6 py-1 flex flex-col items-center fixed top-0 left-0 z-50 font-sans gap-4 transition-transform duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'}`} style={{ boxShadow: '0 4px 6px -1px rgba(212, 180, 131, 0.1), 0 2px 4px -1px rgba(212, 180, 131, 0.06)' }}>
+    <nav className={`w-full bg-[#FAF6EE] border-b-2 border-[#D4B483] shadow-soft px-6 py-1 flex flex-col items-center fixed top-0 left-0 z-50 font-sans gap-4 transition-transform duration-300 ease-in-out`} style={{ boxShadow: '0 4px 6px -1px rgba(212, 180, 131, 0.1), 0 2px 4px -1px rgba(212, 180, 131, 0.06)' }}>
       {/* Logo and Contact info */}
       <div className="w-full flex justify-between items-center">
         <div className="hidden md:flex flex-row items-center text-xs text-[#8A2E3B] gap-3 w-48">
@@ -58,7 +33,7 @@ const Navbar: React.FC = () => {
         </div>
         <div className="flex-1 flex justify-center">
           <Link to="/" className="flex items-center gap-2 transition-transform duration-300 ease-in-out hover:scale-105 hover:drop-shadow-md">
-            <img src="/logo.svg" alt="Orta Novias" className="h-10 transition-all duration-300 ease-in-out" />
+            <img src="/logo.svg" alt="Orta Novias" className="h-16 transition-all duration-300 ease-in-out" />
           </Link>
         </div>
         <div className="hidden md:block w-48"></div> {/* Spacer para equilibrar */}

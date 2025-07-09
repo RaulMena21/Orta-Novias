@@ -20,7 +20,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <div className="max-w-4xl mx-auto px-4 py-6 pt-20">
+      <div className="max-w-7xl mx-auto px-4 py-6 pt-20">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/dashboard" element={
@@ -28,9 +28,9 @@ function App() {
               <Dashboard />
             </PrivateRoute>
           } />
-          <Route path="/vestidos" element={<DressesPage />} />
-          <Route path="/testimonios" element={<TestimonialsPage />} />
-          <Route path="/citas" element={<AppointmentsPage />} />
+          <Route path="/dresses" element={<DressesPage />} />
+          <Route path="/testimonials" element={<TestimonialsPage />} />
+          <Route path="/appointments" element={<AppointmentsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
