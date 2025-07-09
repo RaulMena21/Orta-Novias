@@ -108,13 +108,13 @@ const DressesPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative h-[60vh] bg-gradient-to-r from-[#F8F5F2] via-[#FAF7F4] to-[#F8F5F2] flex items-center justify-center">
+      <section className="relative h-[40vh] md:h-[50vh] bg-gradient-to-r from-[#F8F5F2] via-[#FAF7F4] to-[#F8F5F2] flex items-center justify-center">
         <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-[#8A2E3B] mb-6 tracking-tight">
+        <div className="relative z-10 text-center px-4 py-8 md:py-15 max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-[#8A2E3B] mb-4 md:mb-6 tracking-tight">
             Catálogo de Vestidos
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
+          <p className="text-lg md:text-xl lg:text-2xl text-gray-700 mb-6 md:mb-8 leading-relaxed">
             Descubre nuestra colección exclusiva. El vestido de tus sueños te está esperando.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -389,12 +389,6 @@ const DressesPage: React.FC = () => {
               <Calendar className="w-5 h-5 inline mr-2" />
               Agendar Cita Personalizada
             </Link>
-            <a
-              href="tel:+34123456789"
-              className="px-8 py-4 border-2 border-white text-white text-lg font-semibold rounded-lg hover:bg-white hover:text-[#8A2E3B] transform hover:scale-105 transition-all duration-300"
-            >
-              Llamar Ahora
-            </a>
           </div>
         </section>
       </div>

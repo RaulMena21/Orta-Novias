@@ -6,10 +6,10 @@ const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[73vh] flex items-start justify-center bg-gradient-to-r from-[#F8F5F2] via-[#FAF7F4] to-[#F8F5F2] pt-24">
+      <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center bg-gradient-to-r from-[#F8F5F2] via-[#FAF7F4] to-[#F8F5F2]">
         <div className="absolute inset-0 bg-black/10 z-0"></div>
-        <div className="relative z-10 text-center px-4 w-full max-w-6xl mx-auto flex flex-col space-y-12 mt-8">
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-bold text-[#D4B483] tracking-tight drop-shadow-lg leading-none">
+        <div className="relative z-10 text-center px-4 w-full max-w-6xl mx-auto flex flex-col space-y-8">
+          <h1 className="text-6xl md:text-8xl lg:text-8xl font-serif font-bold text-[#D4B483] tracking-tight drop-shadow-lg leading-none">
             Orta Novias
           </h1>
           <p className="text-2xl md:text-3xl lg:text-4xl font-light text-[#8A2E3B] max-w-4xl mx-auto leading-relaxed">
@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
           <p className="text-lg md:text-xl lg:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Más de 25 años creando momentos únicos. Tu vestido perfecto te está esperando.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center pt-6">
             <Link 
               to="/appointments" 
               className="px-10 py-5 bg-[#8A2E3B] text-white text-xl font-semibold rounded-lg shadow-xl hover:bg-[#A13347] transform hover:scale-105 transition-all duration-300"
@@ -226,33 +226,6 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#8A2E3B] to-[#A13347] text-white">
-        <div className="max-w-4xl mx-auto text-center px-4">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-            ¿Lista para Encontrar tu Vestido Perfecto?
-          </h2>
-          <p className="text-xl mb-8 opacity-90 leading-relaxed">
-            Agenda tu cita personalizada y déjanos ser parte de tu historia de amor. 
-            La experiencia Orta Novias te está esperando.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              to="/appointments" 
-              className="px-8 py-4 bg-white text-[#8A2E3B] text-lg font-semibold rounded-lg shadow-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300"
-            >
-              Reservar Cita Ahora
-            </Link>
-            <a 
-              href="tel:+34123456789" 
-              className="px-8 py-4 border-2 border-white text-white text-lg font-semibold rounded-lg hover:bg-white hover:text-[#8A2E3B] transform hover:scale-105 transition-all duration-300"
-            >
-              Llamar Ahora
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* Location & Contact */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
@@ -358,39 +331,6 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Newsletter & Social */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto text-center px-4">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-[#8A2E3B]">
-            Mantente Conectada
-          </h2>
-          <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-            Suscríbete a nuestro newsletter para recibir las últimas tendencias, ofertas exclusivas y consejos de estilo.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row max-w-md mx-auto mb-8">
-            <input 
-              type="email" 
-              placeholder="Tu email" 
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-l-lg sm:rounded-r-none rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#D4B483]"
-            />
-            <button className="px-6 py-3 bg-[#8A2E3B] text-white font-semibold rounded-r-lg sm:rounded-l-none rounded-l-lg hover:bg-[#A13347] transition-colors">
-              Suscribirse
-            </button>
-          </div>
-          
-          <div className="flex justify-center space-x-6">
-            <a href="#" className="p-4 bg-[#F8F5F2] rounded-full hover:bg-[#D4B483] group transition-colors">
-              <Instagram className="w-6 h-6 text-[#8A2E3B] group-hover:text-white" />
-            </a>
-            <a href="#" className="p-4 bg-[#F8F5F2] rounded-full hover:bg-[#D4B483] group transition-colors">
-              <Facebook className="w-6 h-6 text-[#8A2E3B] group-hover:text-white" />
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* Trust Details */}
       <section className="py-16 bg-[#F8F5F2] border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4">
