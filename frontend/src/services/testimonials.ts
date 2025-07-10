@@ -1,15 +1,12 @@
 import api from './api';
+import type { BrideTestimonial } from '../types';
 
-export interface Testimonial {
-  id: number;
-  bride_name: string;
-  testimonial: string;
-  image: string;
-  wedding_date: string;
-  created_at: string;
+export async function getTestimonials(): Promise<BrideTestimonial[]> {
+  const response = await api.get<BrideTestimonial[]>('testimonials/');
+  return response.data;
 }
 
-export async function getTestimonials(): Promise<Testimonial[]> {
-  const response = await api.get<Testimonial[]>('testimonials/');
+export async function getTestimonial(id: number): Promise<BrideTestimonial> {
+  const response = await api.get<BrideTestimonial>(`testimonials/${id}/`);
   return response.data;
 }

@@ -16,8 +16,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import JsonResponse
+from django.conf import settings
+from django.conf.urls.static import static
+
+def api_root(request):
+    """Vista simple para la raíz que muestra información de la API"""
+    return JsonResponse({
+        'message': 'Bienvenido a la API de Orta Novias',
+        'version': '1.0',
+        'endpoints': {
+            'admin': '/admin/',
+            'api': '/api/',
+            'dresses': '/api/dresses/',
+            'testimonials': '/api/testimonials/',
+            'appointments': '/api/appointments/',
+        }
+    })
 
 urlpatterns = [
+    path('', api_root, name='api_root'),  # Ruta raíz
     path('admin/', admin.site.urls),
     path('api/', include('backend.api_urls')),
 ]
+
+# Servir archivos de media en desarrollo
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

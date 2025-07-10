@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { getTestimonials } from '../services/testimonials';
-import type { Testimonial } from '../services/testimonials';
+import type { BrideTestimonial } from '../types';
 
 const TestimonialList: React.FC = () => {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [testimonials, setTestimonials] = useState<BrideTestimonial[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 

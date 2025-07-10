@@ -4,8 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 const navItems = [
   { to: '/', label: 'Inicio' },
   { to: '/dresses', label: 'Catálogo' },
-  { to: '/testimonials', label: 'Testimonios' },
   { to: '/appointments', label: 'Reserva tu cita' },
+  { to: '/testimonials', label: 'Testimonios' }
 ];
 
 export const MobileMenu: React.FC = () => {

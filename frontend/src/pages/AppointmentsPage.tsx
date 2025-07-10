@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import { Calendar, Clock, MapPin, Phone, Mail, Star, Heart, Award, CheckCircle, Loader, Users } from 'lucide-react';
+import { createAppointment } from '../services/appointments';
+import type { Appointment } from '../types';
 
 const AppointmentsPage: React.FC = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
     email: '',
     phone: '',
-    preferredDate: '',
-    preferredTime: '',
-    message: '',
-    howDidYouKnow: ''
+    date: '',
+    time: '',
+    comment: '',
+    confirmation_method: 'email' as 'email' | 'whatsapp'
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [validationErrors, setValidationErrors] = useState<{[key: string]: string}>({});
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -26,27 +30,71 @@ const AppointmentsPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
+    setValidationErrors({});
     
-    // Simular envío del formulario
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // Validación del frontend
+    const errors: {[key: string]: string} = {};
     
-    setIsSubmitting(false);
-    setSubmitted(true);
+    // Validar que tenga al menos email o teléfono
+    if (!formData.email && !formData.phone) {
+      errors.contact = 'Debe proporcionar al menos un email o un teléfono.';
+    }
+    
+    // Validar que el método de confirmación coincida con los datos
+    if (formData.confirmation_method === 'email' && !formData.email) {
+      errors.email = 'Para confirmación por email, debe proporcionar un email.';
+    }
+    
+    if (formData.confirmation_method === 'whatsapp' && !formData.phone) {
+      errors.phone = 'Para confirmación por WhatsApp, debe proporcionar un teléfono.';
+    }
+    
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
+      setIsSubmitting(false);
+      return;
+    }
+    
+    try {
+      // Crear la cita usando la API real
+      const appointmentData: Omit<Appointment, 'id' | 'created_at' | 'status' | 'auto_confirmed'> = {
+        name: formData.name,
+        email: formData.email || undefined,
+        phone: formData.phone || undefined,
+        confirmation_method: formData.confirmation_method,
+        date: formData.date,
+        time: formData.time,
+        comment: formData.comment || undefined,
+      };
+
+      const response = await createAppointment(appointmentData);
+      console.log('Cita creada:', response);
+      
+      setSubmitted(true);
+      
+    } catch (err: any) {
+      console.error('Error al crear cita:', err);
+      
+      // Manejar errores de validación del backend
+      if (err?.response?.data) {
+        const backendErrors = err.response.data;
+        if (typeof backendErrors === 'object') {
+          setValidationErrors(backendErrors);
+        } else {
+          setError(backendErrors || 'Error al agendar la cita.');
+        }
+      } else {
+        setError('Error al agendar la cita. Por favor, intenta de nuevo.');
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const timeSlots = [
     '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00',
     '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30'
-  ];
-
-  const howDidYouKnowOptions = [
-    'Redes sociales (Instagram/Facebook)',
-    'Recomendación de una amiga',
-    'Búsqueda en Google',
-    'Publicidad online',
-    'Revista o periódico',
-    'Pasé por la tienda',
-    'Otro'
   ];
 
   if (submitted) {
@@ -71,13 +119,13 @@ const AppointmentsPage: React.FC = () => {
             onClick={() => {
               setSubmitted(false);
               setFormData({
-                fullName: '',
+                name: '',
                 email: '',
                 phone: '',
-                preferredDate: '',
-                preferredTime: '',
-                message: '',
-                howDidYouKnow: ''
+                date: '',
+                time: '',
+                comment: '',
+                confirmation_method: 'email'
               });
             }}
             className="w-full px-6 py-3 bg-[#8A2E3B] text-white font-semibold rounded-lg hover:bg-[#A13347] transition-colors"
@@ -115,6 +163,24 @@ const AppointmentsPage: React.FC = () => {
               </h2>
               
               <form onSubmit={handleSubmit} className="space-y-8">
+                {/* Error message */}
+                {error && (
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <div className="text-red-600 text-sm">
+                      ❌ {error}
+                    </div>
+                  </div>
+                )}
+
+                {/* Validation error for contact methods */}
+                {validationErrors.contact && (
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <div className="text-red-600 text-sm">
+                      ❌ {validationErrors.contact}
+                    </div>
+                  </div>
+                )}
+
                 {/* Nombre completo */}
                 <div>
                   <label className="block text-lg font-medium text-gray-700 mb-3">
@@ -122,8 +188,8 @@ const AppointmentsPage: React.FC = () => {
                   </label>
                   <input
                     type="text"
-                    name="fullName"
-                    value={formData.fullName}
+                    name="name"
+                    value={formData.name}
                     onChange={handleInputChange}
                     required
                     className="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300"
@@ -134,32 +200,76 @@ const AppointmentsPage: React.FC = () => {
                 {/* Email */}
                 <div>
                   <label className="block text-lg font-medium text-gray-700 mb-3">
-                    Email *
+                    Email
+                    <span className="text-sm text-gray-500 font-normal"> (requerido si eliges confirmación por email)</span>
                   </label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    required
-                    className="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300"
+                    className={`w-full px-6 py-4 text-lg border-2 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300 ${
+                      validationErrors.email ? 'border-red-300 bg-red-50' : 'border-gray-200'
+                    }`}
                     placeholder="tu@email.com"
                   />
+                  {validationErrors.email && (
+                    <p className="text-red-600 text-sm mt-1">{validationErrors.email}</p>
+                  )}
                 </div>
 
                 {/* Teléfono */}
                 <div>
                   <label className="block text-lg font-medium text-gray-700 mb-3">
                     Teléfono
+                    <span className="text-sm text-gray-500 font-normal"> (requerido si eliges confirmación por WhatsApp)</span>
                   </label>
                   <input
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300"
+                    className={`w-full px-6 py-4 text-lg border-2 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300 ${
+                      validationErrors.phone ? 'border-red-300 bg-red-50' : 'border-gray-200'
+                    }`}
                     placeholder="+34 123 456 789"
                   />
+                  {validationErrors.phone && (
+                    <p className="text-red-600 text-sm mt-1">{validationErrors.phone}</p>
+                  )}
+                </div>
+
+                {/* Método de confirmación */}
+                <div>
+                  <label className="block text-lg font-medium text-gray-700 mb-3">
+                    ¿Cómo prefieres que te confirmemos la cita? *
+                  </label>
+                  <div className="grid grid-cols-2 gap-4">
+                    <label className="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-[#D4B483] transition-colors">
+                      <input
+                        type="radio"
+                        name="confirmation_method"
+                        value="email"
+                        checked={formData.confirmation_method === 'email'}
+                        onChange={handleInputChange}
+                        className="w-4 h-4 text-[#8A2E3B] focus:ring-[#D4B483]"
+                      />
+                      <Mail className="w-5 h-5 text-gray-600" />
+                      <span className="text-lg">Email</span>
+                    </label>
+                    <label className="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-[#D4B483] transition-colors">
+                      <input
+                        type="radio"
+                        name="confirmation_method"
+                        value="whatsapp"
+                        checked={formData.confirmation_method === 'whatsapp'}
+                        onChange={handleInputChange}
+                        className="w-4 h-4 text-[#8A2E3B] focus:ring-[#D4B483]"
+                      />
+                      <Phone className="w-5 h-5 text-gray-600" />
+                      <span className="text-lg">WhatsApp</span>
+                    </label>
+                  </div>
                 </div>
 
                 {/* Fecha y hora en grid */}
@@ -173,8 +283,8 @@ const AppointmentsPage: React.FC = () => {
                       <Calendar className="absolute left-4 top-4 w-6 h-6 text-gray-400" />
                       <input
                         type="date"
-                        name="preferredDate"
-                        value={formData.preferredDate}
+                        name="date"
+                        value={formData.date}
                         onChange={handleInputChange}
                         required
                         min={new Date().toISOString().split('T')[0]}
@@ -191,8 +301,8 @@ const AppointmentsPage: React.FC = () => {
                     <div className="relative">
                       <Clock className="absolute left-4 top-4 w-6 h-6 text-gray-400" />
                       <select
-                        name="preferredTime"
-                        value={formData.preferredTime}
+                        name="time"
+                        value={formData.time}
                         onChange={handleInputChange}
                         required
                         className="w-full pl-14 pr-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300 appearance-none"
@@ -212,31 +322,13 @@ const AppointmentsPage: React.FC = () => {
                     Mensaje adicional
                   </label>
                   <textarea
-                    name="message"
-                    value={formData.message}
+                    name="comment"
+                    value={formData.comment}
                     onChange={handleInputChange}
                     rows={4}
                     className="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300 resize-none"
                     placeholder="Cuéntanos sobre tu boda, estilo preferido, o cualquier pregunta que tengas..."
                   />
-                </div>
-
-                {/* ¿Cómo nos conociste? */}
-                <div>
-                  <label className="block text-lg font-medium text-gray-700 mb-3">
-                    ¿Cómo nos conociste?
-                  </label>
-                  <select
-                    name="howDidYouKnow"
-                    value={formData.howDidYouKnow}
-                    onChange={handleInputChange}
-                    className="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300"
-                  >
-                    <option value="">Selecciona una opción</option>
-                    {howDidYouKnowOptions.map(option => (
-                      <option key={option} value={option}>{option}</option>
-                    ))}
-                  </select>
                 </div>
 
                 {/* Botón de envío */}

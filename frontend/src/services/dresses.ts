@@ -1,16 +1,12 @@
 import api from './api';
-
-export interface Dress {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  style: string;
-  available: boolean;
-  created_at: string;
-}
+import type { Dress } from '../types';
 
 export async function getDresses(): Promise<Dress[]> {
   const response = await api.get<Dress[]>('dresses/');
+  return response.data;
+}
+
+export async function getDress(id: number): Promise<Dress> {
+  const response = await api.get<Dress>(`dresses/${id}/`);
   return response.data;
 }
