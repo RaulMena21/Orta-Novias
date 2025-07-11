@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.conf import settings
 from django.utils.deprecation import MiddlewareMixin
 from django.contrib.auth.models import AnonymousUser
+from backend.apps.appointments.security_monitor import SecurityMonitor
 
 logger = logging.getLogger(__name__)
 
@@ -29,9 +30,19 @@ class SecurityMiddleware(MiddlewareMixin):
     def process_request(self, request):
         """Procesar request entrante"""
         
+        ip = self._get_client_ip(request)
+        
+        # Verificar si la IP está bloqueada
+        if SecurityMonitor.is_ip_blocked(ip):
+            logger.critical(f"Blocked IP {ip} attempted access to {request.get_full_path()}")
+            return JsonResponse({
+                'error': 'Acceso denegado. Contacta al administrador si crees que esto es un error.',
+                'code': 'IP_BLOCKED'
+            }, status=403)
+        
         # Rate limiting
         if self._is_rate_limited(request):
-            logger.warning(f"Rate limit exceeded for IP: {self._get_client_ip(request)}")
+            logger.warning(f"Rate limit exceeded for IP: {ip}")
             return JsonResponse({
                 'error': 'Demasiadas solicitudes. Intenta de nuevo más tarde.',
                 'retry_after': 60
@@ -108,6 +119,12 @@ class SecurityMiddleware(MiddlewareMixin):
         
         # Verificar si excede el límite
         if len(valid_attempts) >= rate_limit['max_requests']:
+            # Registrar con el monitor de seguridad
+            SecurityMonitor.log_failed_validation(
+                ip, 
+                'rate_limit_exceeded', 
+                f"Rate limit exceeded for path {request.path}"
+            )
             return True
         
         # Registrar nuevo intento
@@ -139,9 +156,18 @@ class SecurityMiddleware(MiddlewareMixin):
         for data in check_data:
             for pattern in suspicious_patterns:
                 if pattern in data:
+                    ip = self._get_client_ip(request)
+                    
+                    # Registrar con el monitor de seguridad
+                    SecurityMonitor.log_suspicious_pattern(
+                        ip, 
+                        pattern, 
+                        data[:500]  # Limitar datos para logs
+                    )
+                    
                     logger.critical(
                         f"SECURITY ALERT: Suspicious pattern '{pattern}' detected from "
-                        f"IP: {self._get_client_ip(request)} "
+                        f"IP: {ip} "
                         f"URL: {request.get_full_path()} "
                         f"User-Agent: {request.META.get('HTTP_USER_AGENT', 'Unknown')}"
                     )

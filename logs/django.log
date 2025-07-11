@@ -4,3 +4,52 @@ INFO 2025-07-11 21:22:31,581 autoreload 17236 10640 C:\Users\lopol\Videos\Proyec
 INFO 2025-07-11 21:22:33,033 autoreload 11500 16476 Watching for file changes with StatReloader
 INFO 2025-07-11 21:22:54,472 autoreload 11500 16476 C:\Users\lopol\Videos\Proyectos\Orta Novias\core\settings.py changed, reloading.
 INFO 2025-07-11 21:22:55,442 autoreload 14396 17368 Watching for file changes with StatReloader
+INFO 2025-07-11 21:27:37,326 autoreload 14396 17368 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\middleware\__init__.py changed, reloading.
+INFO 2025-07-11 21:27:38,283 autoreload 6808 924 Watching for file changes with StatReloader
+INFO 2025-07-11 21:29:02,552 autoreload 6808 924 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 21:29:03,738 autoreload 17232 8352 Watching for file changes with StatReloader
+INFO 2025-07-11 21:29:22,040 autoreload 17232 8352 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 21:29:23,038 autoreload 9340 10860 Watching for file changes with StatReloader
+INFO 2025-07-11 21:29:40,378 autoreload 9340 10860 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 21:29:41,386 autoreload 3064 16932 Watching for file changes with StatReloader
+INFO 2025-07-11 21:31:09,465 autoreload 3064 16932 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\middleware\security.py changed, reloading.
+INFO 2025-07-11 21:31:10,511 autoreload 8244 3736 Watching for file changes with StatReloader
+INFO 2025-07-11 21:31:25,410 autoreload 8244 3736 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\middleware\security.py changed, reloading.
+INFO 2025-07-11 21:31:26,378 autoreload 3996 13668 Watching for file changes with StatReloader
+INFO 2025-07-11 21:31:41,283 autoreload 3996 13668 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\middleware\security.py changed, reloading.
+INFO 2025-07-11 21:31:42,221 autoreload 6416 11076 Watching for file changes with StatReloader
+INFO 2025-07-11 21:31:55,910 autoreload 6416 11076 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\middleware\security.py changed, reloading.
+INFO 2025-07-11 21:31:57,259 autoreload 15736 6932 Watching for file changes with StatReloader
+INFO 2025-07-11 21:32:34,180 autoreload 15736 6932 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\validators.py changed, reloading.
+INFO 2025-07-11 21:32:35,373 autoreload 16328 11176 Watching for file changes with StatReloader
+INFO 2025-07-11 21:32:44,838 autoreload 16328 11176 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\validators.py changed, reloading.
+INFO 2025-07-11 21:32:45,974 autoreload 16316 9472 Watching for file changes with StatReloader
+INFO 2025-07-11 21:35:28,909 autoreload 16316 9472 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\validators.py changed, reloading.
+INFO 2025-07-11 21:35:30,162 autoreload 16648 2584 Watching for file changes with StatReloader
+INFO 2025-07-11 21:35:45,635 autoreload 16648 2584 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 21:35:46,681 autoreload 14808 13280 Watching for file changes with StatReloader
+INFO 2025-07-11 21:36:07,538 autoreload 14808 13280 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 21:36:08,531 autoreload 5060 12508 Watching for file changes with StatReloader
+INFO 2025-07-11 21:38:28,080 autoreload 5060 12508 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 21:38:29,178 autoreload 8640 5740 Watching for file changes with StatReloader
+INFO 2025-07-11 21:38:50,444 autoreload 12228 11984 Watching for file changes with StatReloader
+INFO 2025-07-11 21:41:22,926 autoreload 12228 11984 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\validators.py changed, reloading.
+INFO 2025-07-11 21:41:24,361 autoreload 16748 8432 Watching for file changes with StatReloader
+INFO 2025-07-11 21:42:13,516 autoreload 16888 6492 Watching for file changes with StatReloader
+INFO 2025-07-11 21:44:20,783 autoreload 16888 6492 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\validators.py changed, reloading.
+INFO 2025-07-11 21:44:21,989 autoreload 12504 4640 Watching for file changes with StatReloader
+INFO 2025-07-11 21:44:30,786 autoreload 12504 4640 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 21:44:31,732 autoreload 8004 1916 Watching for file changes with StatReloader
+INFO 2025-07-11 21:44:39,483 autoreload 8004 1916 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 21:44:40,429 autoreload 2636 8768 Watching for file changes with StatReloader
+INFO 2025-07-11 21:47:01,232 autoreload 8636 8356 Watching for file changes with StatReloader
+INFO 2025-07-11 21:48:54,162 autoreload 8636 8356 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\validators.py changed, reloading.
+INFO 2025-07-11 21:48:55,313 autoreload 9912 3144 Watching for file changes with StatReloader
+INFO 2025-07-11 21:49:28,467 autoreload 9912 3144 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 21:49:29,538 autoreload 2624 6432 Watching for file changes with StatReloader
+INFO 2025-07-11 21:49:37,168 autoreload 2624 6432 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 21:49:38,069 autoreload 15568 11088 Watching for file changes with StatReloader
+INFO 2025-07-11 21:49:46,801 autoreload 15568 11088 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 21:49:47,700 autoreload 12720 3592 Watching for file changes with StatReloader
+INFO 2025-07-11 21:50:31,487 autoreload 12720 3592 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\validators.py changed, reloading.
+INFO 2025-07-11 21:50:32,901 autoreload 6932 12380 Watching for file changes with StatReloader
