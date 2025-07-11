@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, Filter, Grid, List, Search, X, Calendar, Tag, CheckCircle } from 'lucide-react';
 import type { Dress } from '../types';
 import { getDresses } from '../services/dresses';
+import EnhancedGallery from '../components/EnhancedGallery';
 
 const DressesPage: React.FC = () => {
   const [dresses, setDresses] = useState<Dress[]>([]);
@@ -16,6 +17,8 @@ const DressesPage: React.FC = () => {
   const [selectedDress, setSelectedDress] = useState<Dress | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showEnhancedGallery, setShowEnhancedGallery] = useState(false);
+  const [galleryImages, setGalleryImages] = useState<string[]>([]);
   const itemsPerPage = 6;
 
   // Cargar vestidos del backend
@@ -64,10 +67,24 @@ const DressesPage: React.FC = () => {
     setShowModal(true);
   };
 
+  const openEnhancedGallery = (dress: Dress, startIndex: number = 0) => {
+    const allImages = getAllImages(dress);
+    setGalleryImages(allImages);
+    setCurrentImageIndex(startIndex);
+    setSelectedDress(dress);
+    setShowEnhancedGallery(true);
+  };
+
   const closeModal = () => {
     setSelectedDress(null);
     setCurrentImageIndex(0);
     setShowModal(false);
+  };
+
+  const closeEnhancedGallery = () => {
+    setShowEnhancedGallery(false);
+    setGalleryImages([]);
+    setCurrentImageIndex(0);
   };
 
   // Función para obtener todas las imágenes del vestido
@@ -229,12 +246,19 @@ const DressesPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {currentDresses.map((dress) => (
               <div key={dress.id} className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 border border-gray-100">
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden cursor-pointer" onClick={() => openEnhancedGallery(dress, 0)}>
                   <img
                     src={dress.image}
                     alt={dress.name}
                     className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-[#8A2E3B]">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+                      </svg>
+                    </div>
+                  </div>
                   <div className="absolute top-4 right-4 bg-gradient-to-r from-[#D4B483] to-[#8A2E3B] text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
                     {dress.style}
                   </div>
@@ -270,12 +294,19 @@ const DressesPage: React.FC = () => {
             {currentDresses.map((dress) => (
               <div key={dress.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 border border-gray-100">
                 <div className="flex flex-col md:flex-row">
-                  <div className="md:w-1/3">
+                  <div className="md:w-1/3 relative cursor-pointer" onClick={() => openEnhancedGallery(dress, 0)}>
                     <img
                       src={dress.image}
                       alt={dress.name}
-                      className="w-full h-64 md:h-full object-cover"
+                      className="w-full h-64 md:h-full object-cover hover:scale-105 transition-transform duration-700"
                     />
+                    <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-300 flex items-center justify-center">
+                      <div className="opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-[#8A2E3B]">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                   <div className="flex-1 p-8">
                     <div className="flex items-start justify-between mb-4">
@@ -394,12 +425,20 @@ const DressesPage: React.FC = () => {
                   {(() => {
                     const allImages = getAllImages(selectedDress);
                     return (
-                      <div className="relative">
+                      <div className="relative group">
                         <img
                           src={allImages[currentImageIndex]}
                           alt={`${selectedDress.name} - ${currentImageIndex + 1}`}
-                          className="w-full h-96 md:h-[500px] object-cover rounded-xl"
+                          className="w-full h-96 md:h-[500px] object-cover rounded-xl cursor-pointer hover:brightness-110 transition-all duration-300"
+                          onClick={() => openEnhancedGallery(selectedDress, currentImageIndex)}
                         />
+                        
+                        {/* Overlay para indicar que se puede ampliar */}
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-xl flex items-center justify-center">
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 px-4 py-2 rounded-lg">
+                            <span className="text-sm font-medium text-gray-800">Click para ampliar</span>
+                          </div>
+                        </div>
                         
                         {/* Navegación del carrusel si hay múltiples imágenes */}
                         {allImages.length > 1 && (
@@ -537,6 +576,15 @@ const DressesPage: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Enhanced Gallery */}
+      <EnhancedGallery
+        images={galleryImages}
+        alt={selectedDress?.name || 'Vestido'}
+        isOpen={showEnhancedGallery}
+        onClose={closeEnhancedGallery}
+        initialIndex={currentImageIndex}
+      />
     </div>
   );
 };

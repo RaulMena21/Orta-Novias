@@ -200,21 +200,18 @@ const HomePage: React.FC = () => {
                 title: "Elegancia Atemporal",
                 subtitle: "Colección Clásica",
                 description: "Siluetas icónicas que trascienden tendencias, diseñadas para novias que valoran la sofisticación eterna.",
-                price: "Desde €1,200",
                 gradient: "from-[#8A2E3B] via-[#A13347] to-[#B8475A]"
               },
               {
                 title: "Modernidad Sublime",
                 subtitle: "Colección Contemporánea", 
                 description: "Líneas vanguardistas y detalles innovadores para la novia que define su propio estilo único.",
-                price: "Desde €1,500",
                 gradient: "from-[#D4B483] via-[#C4A373] to-[#B49363]"
               },
               {
                 title: "Romance Infinito",
                 subtitle: "Colección Romántica",
                 description: "Encajes delicados y detalles etéreos que capturan la esencia más pura del amor verdadero.",
-                price: "Desde €1,000",
                 gradient: "from-[#8A2E3B] via-[#D4B483] to-[#A13347]"
               }
             ].map((collection, index) => (
@@ -247,7 +244,7 @@ const HomePage: React.FC = () => {
                     {collection.description}
                   </p>
                   <div className="flex justify-between items-center">
-                    <span className="text-xl font-semibold text-[#D4B483]">{collection.price}</span>
+                    <span className="text-xl font-semibold text-[#D4B483]"></span>
                     <Link 
                       to="/dresses" 
                       className="inline-flex items-center gap-2 text-[#8A2E3B] hover:text-[#D4B483] font-semibold transition-colors duration-300 group"

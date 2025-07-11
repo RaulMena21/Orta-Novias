@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getDresses } from '../services/dresses';
-import type { Dress } from '../services/dresses';
+import type { Dress } from '../types';
 
 const DressList: React.FC = () => {
   const [dresses, setDresses] = useState<Dress[]>([]);

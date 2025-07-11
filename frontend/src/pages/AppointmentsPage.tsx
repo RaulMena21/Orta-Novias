@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Calendar, Clock, MapPin, Phone, Mail, Star, Heart, Award, CheckCircle, Loader, Users } from 'lucide-react';
-import { createAppointment } from '../services/appointments';
-import type { Appointment } from '../types';
+import React, { useState, useEffect } from 'react';
+import { Calendar, Clock, MapPin, Phone, Mail, Star, Heart, Award, CheckCircle, Loader, Users, AlertCircle } from 'lucide-react';
+import { appointmentService } from '../services/appointments';
 
 const AppointmentsPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -18,13 +17,121 @@ const AppointmentsPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [validationErrors, setValidationErrors] = useState<{[key: string]: string}>({});
+  const [bookedTimes, setBookedTimes] = useState<string[]>([]);
+  const [loadingTimes, setLoadingTimes] = useState(false);
+  const [businessHours, setBusinessHours] = useState<string[]>([]);
+  const [dateValidation, setDateValidation] = useState<{isValid: boolean; message: string} | null>(null);
+
+  // Función para cargar horarios de negocio
+  const loadBusinessHours = async () => {
+    try {
+      const response = await appointmentService.getBusinessHours();
+      setBusinessHours(response.time_slots);
+      console.log('📅 Horarios de negocio cargados:', response.time_slots);
+    } catch (error) {
+      console.error('❌ Error al cargar horarios de negocio:', error);
+      // Usar horarios por defecto si falla la carga
+      setBusinessHours([
+        '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30',
+        '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30'
+      ]);
+    }
+  };
+
+  // Función para validar una fecha
+  const validateSelectedDate = async (selectedDate: string) => {
+    if (!selectedDate) {
+      setDateValidation(null);
+      return;
+    }
+
+    // Validación local como respaldo
+    const dateObj = new Date(selectedDate);
+    const dayOfWeek = dateObj.getDay(); // 0 = domingo, 1 = lunes, ..., 6 = sábado
+    const isWeekend = dayOfWeek === 0 || dayOfWeek === 6; // domingo o sábado
+
+    try {
+      console.log('🔍 Validando fecha:', selectedDate);
+      console.log('📅 Día de la semana:', dayOfWeek, isWeekend ? '(fin de semana)' : '(día laborable)');
+      
+      const validation = await appointmentService.validateDate(selectedDate);
+      console.log('📋 Respuesta de validación del backend:', validation);
+      
+      setDateValidation({
+        isValid: validation.is_valid,
+        message: validation.message
+      });
+    } catch (error) {
+      console.error('❌ Error al validar fecha con backend:', error);
+      
+      // Si falla el backend, usar validación local
+      if (isWeekend) {
+        setDateValidation({
+          isValid: false,
+          message: 'Los fines de semana no están disponibles para citas. Por favor, selecciona un día de lunes a viernes.'
+        });
+      } else {
+        setDateValidation({
+          isValid: true,
+          message: 'Fecha disponible para citas'
+        });
+      }
+    }
+  };
+
+  // Función para cargar las horas ocupadas cuando cambie la fecha
+  const loadBookedTimes = async (selectedDate: string) => {
+    if (!selectedDate) {
+      setBookedTimes([]);
+      return;
+    }
+
+    console.log('🗓️ Cargando horas ocupadas para:', selectedDate);
+    setLoadingTimes(true);
+    try {
+      const booked = await appointmentService.getBookedAppointments(selectedDate);
+      console.log('✅ Horas ocupadas cargadas:', booked);
+      setBookedTimes(booked);
+    } catch (error) {
+      console.error('❌ Error al cargar horas ocupadas:', error);
+      setBookedTimes([]);
+    } finally {
+      setLoadingTimes(false);
+    }
+  };
+
+  // Effect para cargar horarios de negocio al montar el componente
+  useEffect(() => {
+    loadBusinessHours();
+  }, []);
+
+  // Effect para validar fecha y cargar horas ocupadas cuando cambie la fecha
+  useEffect(() => {
+    if (formData.date) {
+      validateSelectedDate(formData.date);
+      loadBookedTimes(formData.date);
+    } else {
+      setDateValidation(null);
+      setBookedTimes([]);
+    }
+  }, [formData.date]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    
+    // Si cambió la fecha, resetear la hora seleccionada
+    if (name === 'date') {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value,
+        time: '' // Resetear la hora cuando cambie la fecha
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -58,17 +165,15 @@ const AppointmentsPage: React.FC = () => {
     
     try {
       // Crear la cita usando la API real
-      const appointmentData: Omit<Appointment, 'id' | 'created_at' | 'status' | 'auto_confirmed'> = {
-        name: formData.name,
-        email: formData.email || undefined,
-        phone: formData.phone || undefined,
-        confirmation_method: formData.confirmation_method,
+      const appointmentData = {
+        user: 1, // Por ahora usamos un user por defecto
         date: formData.date,
         time: formData.time,
-        comment: formData.comment || undefined,
+        notes: formData.comment || undefined,
+        status: 'pending' as const
       };
 
-      const response = await createAppointment(appointmentData);
+      const response = await appointmentService.createAppointment(appointmentData);
       console.log('Cita creada:', response);
       
       setSubmitted(true);
@@ -92,10 +197,21 @@ const AppointmentsPage: React.FC = () => {
     }
   };
 
-  const timeSlots = [
-    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00',
+  // Usar horarios de negocio o por defecto
+  const timeSlots = businessHours.length > 0 ? businessHours : [
+    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30',
     '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30'
   ];
+
+  // Filtrar horas disponibles eliminando las ya ocupadas y considerando validación de fecha
+  const availableTimeSlots = dateValidation?.isValid !== false 
+    ? timeSlots.filter(time => !bookedTimes.includes(time))
+    : [];
+  
+  // Log para debugging
+  console.log('🕐 Todas las horas:', timeSlots);
+  console.log('🚫 Horas ocupadas:', bookedTimes);
+  console.log('✅ Horas disponibles:', availableTimeSlots);
 
   if (submitted) {
     return (
@@ -288,9 +404,25 @@ const AppointmentsPage: React.FC = () => {
                         onChange={handleInputChange}
                         required
                         min={new Date().toISOString().split('T')[0]}
-                        className="w-full pl-14 pr-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300"
+                        className={`w-full pl-14 pr-6 py-4 text-lg border-2 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300 ${
+                          dateValidation?.isValid === false 
+                            ? 'border-red-300 bg-red-50' 
+                            : 'border-gray-200'
+                        }`}
                       />
                     </div>
+                    
+                    {/* Validación de fecha */}
+                    {dateValidation && (
+                      <div className={`mt-2 p-3 rounded-lg flex items-center gap-2 ${
+                        dateValidation.isValid 
+                          ? 'bg-green-50 text-green-700' 
+                          : 'bg-red-50 text-red-700'
+                      }`}>
+                        <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                        <span className="text-sm">{dateValidation.message}</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Hora preferida */}
@@ -305,15 +437,52 @@ const AppointmentsPage: React.FC = () => {
                         value={formData.time}
                         onChange={handleInputChange}
                         required
-                        className="w-full pl-14 pr-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300 appearance-none"
+                        disabled={!formData.date || loadingTimes}
+                        className="w-full pl-14 pr-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300 appearance-none disabled:bg-gray-100 disabled:cursor-not-allowed"
                       >
-                        <option value="">Selecciona una hora</option>
-                        {timeSlots.map(time => (
+                        <option value="">
+                          {!formData.date ? 'Primero selecciona una fecha' : 
+                           dateValidation?.isValid === false ? 'Fecha no disponible para citas' :
+                           loadingTimes ? 'Cargando horas disponibles...' : 
+                           availableTimeSlots.length === 0 ? 'No hay horas disponibles' :
+                           'Selecciona una hora'}
+                        </option>
+                        {availableTimeSlots.map(time => (
                           <option key={time} value={time}>{time}</option>
                         ))}
                       </select>
                     </div>
                   </div>
+                  
+                  {/* Información sobre disponibilidad */}
+                  {formData.date && !loadingTimes && (
+                    <div className="mt-3">
+                      {dateValidation?.isValid === false && (
+                        <p className="text-sm text-red-600 flex items-center gap-2">
+                          <AlertCircle className="w-4 h-4" />
+                          Esta fecha no está disponible para citas. Por favor, selecciona una fecha de lunes a viernes.
+                        </p>
+                      )}
+                      {dateValidation?.isValid !== false && bookedTimes.length > 0 && availableTimeSlots.length > 0 && (
+                        <p className="text-sm text-amber-600 flex items-center gap-2">
+                          <Clock className="w-4 h-4" />
+                          Hay {bookedTimes.length} hora{bookedTimes.length !== 1 ? 's' : ''} ya reservada{bookedTimes.length !== 1 ? 's' : ''} para esta fecha
+                        </p>
+                      )}
+                      {dateValidation?.isValid !== false && bookedTimes.length > 0 && availableTimeSlots.length === 0 && (
+                        <p className="text-sm text-red-600 flex items-center gap-2">
+                          <Clock className="w-4 h-4" />
+                          Lo sentimos, no hay horas disponibles para esta fecha. Por favor, selecciona otra fecha.
+                        </p>
+                      )}
+                      {bookedTimes.length === 0 && (
+                        <p className="text-sm text-green-600 flex items-center gap-2">
+                          <Clock className="w-4 h-4" />
+                          ¡Todas las horas están disponibles para esta fecha!
+                        </p>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {/* Mensaje adicional */}
@@ -400,7 +569,7 @@ const AppointmentsPage: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-[#8A2E3B] mb-1">Horarios</h4>
-                    <p className="text-gray-600">Lun-Sáb: 09:00-14:00/17:00-21:00</p>
+                    <p className="text-gray-600">Lun-Vie: 09:00-13:30/17:00-20:30</p>
                   </div>
                 </div>
               </div>

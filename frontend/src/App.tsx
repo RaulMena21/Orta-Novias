@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import ScrollToTop from './components/ScrollToTop';
 import Dashboard from './pages/Dashboard';
 import HomePage from './pages/HomePage';
 import DressesPage from './pages/DressesPage';
@@ -19,8 +20,9 @@ function PrivateRoute({ children }: { children: React.ReactElement }) {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Navbar />
-      <div className="max-w-7xl mx-auto px-4 py-6 pt-20">
+      <div className="max-w-8xl mx-auto px-4 py-6 pt-20">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/dashboard" element={
