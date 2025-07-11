@@ -1,1 +1,6 @@
 INFO 2025-07-11 04:38:22,780 autoreload 21108 20308 Watching for file changes with StatReloader
+INFO 2025-07-11 21:20:45,627 autoreload 17236 10640 Watching for file changes with StatReloader
+INFO 2025-07-11 21:22:31,581 autoreload 17236 10640 C:\Users\lopol\Videos\Proyectos\Orta Novias\core\settings.py changed, reloading.
+INFO 2025-07-11 21:22:33,033 autoreload 11500 16476 Watching for file changes with StatReloader
+INFO 2025-07-11 21:22:54,472 autoreload 11500 16476 C:\Users\lopol\Videos\Proyectos\Orta Novias\core\settings.py changed, reloading.
+INFO 2025-07-11 21:22:55,442 autoreload 14396 17368 Watching for file changes with StatReloader

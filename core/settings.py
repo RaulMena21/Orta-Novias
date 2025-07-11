@@ -74,17 +74,48 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'backend.middleware.security.SecurityMiddleware',  # Nuestro middleware de seguridad
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'backend.middleware.security.CSRFSecurityMiddleware',  # Validación CSRF adicional
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'backend.middleware.security.DataSanitizationMiddleware',  # Sanitización de datos
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Permitir CORS para desarrollo con Vite
-CORS_ALLOW_ALL_ORIGINS = True
+# Configuración de CORS
+if DEBUG:
+    # Desarrollo: permitir todos los orígenes
+    CORS_ALLOW_ALL_ORIGINS = True
+else:
+    # Producción: solo orígenes específicos
+    CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', '').split(',')
+    CORS_ALLOW_CREDENTIALS = True
+
+# Configuración de seguridad adicional
+ALLOWED_ORIGINS = os.getenv('ALLOWED_ORIGINS', 'http://localhost:5173,http://127.0.0.1:5173').split(',')
+
+# Configuración de cache para rate limiting
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+        'OPTIONS': {
+            'MAX_ENTRIES': 1000,
+            'CULL_FREQUENCY': 3,
+        }
+    }
+}
+
+# En producción, usar Redis
+if not DEBUG:
+    CACHES['default'] = {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': os.getenv('REDIS_URL', 'redis://127.0.0.1:6379/1'),
+    }
 
 ROOT_URLCONF = 'core.urls'
 

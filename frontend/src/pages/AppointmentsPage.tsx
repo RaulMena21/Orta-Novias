@@ -1,6 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin, Phone, Mail, Star, Heart, Award, CheckCircle, Loader, Users, AlertCircle } from 'lucide-react';
 import { appointmentService } from '../services/appointments';
+import { formSubmissionRateLimiter } from '../utils/rateLimiter';
+
+// Funciones de validación y sanitización
+const sanitizeInput = (input: string): string => {
+  return input.trim().replace(/[<>\"'&]/g, '');
+};
+
+const validateEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+
+const validatePhone = (phone: string): boolean => {
+  const phoneRegex = /^[+]?[\d\s\-()]{9,20}$/;
+  return phoneRegex.test(phone.replace(/\s/g, ''));
+};
+
+const validateName = (name: string): boolean => {
+  return name.length >= 2 && name.length <= 100 && /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(name);
+};
 
 const AppointmentsPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -119,17 +139,29 @@ const AppointmentsPage: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     
+    // Sanitizar input según el tipo de campo
+    let sanitizedValue = value;
+    if (name === 'name') {
+      sanitizedValue = sanitizeInput(value);
+    } else if (name === 'email') {
+      sanitizedValue = value.toLowerCase().trim();
+    } else if (name === 'phone') {
+      sanitizedValue = value.replace(/[^\d+\s\-()]/g, '');
+    } else if (name === 'comment') {
+      sanitizedValue = sanitizeInput(value);
+    }
+    
     // Si cambió la fecha, resetear la hora seleccionada
     if (name === 'date') {
       setFormData(prev => ({
         ...prev,
-        [name]: value,
+        [name]: sanitizedValue,
         time: '' // Resetear la hora cuando cambie la fecha
       }));
     } else {
       setFormData(prev => ({
         ...prev,
-        [name]: value
+        [name]: sanitizedValue
       }));
     }
   };
@@ -140,21 +172,71 @@ const AppointmentsPage: React.FC = () => {
     setError(null);
     setValidationErrors({});
     
-    // Validación del frontend
+    // Verificar rate limiting basado en IP/sesión
+    const clientId = 'form_submission'; // En producción, usar IP o ID de sesión
+    
+    if (!formSubmissionRateLimiter.isAllowed(clientId)) {
+      const timeUntilReset = Math.ceil(formSubmissionRateLimiter.getTimeUntilReset(clientId) / 1000);
+      setError(`Has enviado demasiadas solicitudes. Intenta de nuevo en ${timeUntilReset} segundos.`);
+      setIsSubmitting(false);
+      return;
+    }
+    
+    // Validación robusta del frontend
     const errors: {[key: string]: string} = {};
+    
+    // Validar nombre
+    if (!formData.name) {
+      errors.name = 'El nombre es requerido.';
+    } else if (!validateName(formData.name)) {
+      errors.name = 'El nombre debe tener entre 2 y 100 caracteres y solo contener letras.';
+    }
     
     // Validar que tenga al menos email o teléfono
     if (!formData.email && !formData.phone) {
       errors.contact = 'Debe proporcionar al menos un email o un teléfono.';
     }
     
+    // Validar email si se proporciona
+    if (formData.email && !validateEmail(formData.email)) {
+      errors.email = 'El formato del email no es válido.';
+    }
+    
+    // Validar teléfono si se proporciona
+    if (formData.phone && !validatePhone(formData.phone)) {
+      errors.phone = 'El formato del teléfono no es válido.';
+    }
+    
     // Validar que el método de confirmación coincida con los datos
     if (formData.confirmation_method === 'email' && !formData.email) {
-      errors.email = 'Para confirmación por email, debe proporcionar un email.';
+      errors.email = 'Para confirmación por email, debe proporcionar un email válido.';
     }
     
     if (formData.confirmation_method === 'whatsapp' && !formData.phone) {
-      errors.phone = 'Para confirmación por WhatsApp, debe proporcionar un teléfono.';
+      errors.phone = 'Para confirmación por WhatsApp, debe proporcionar un teléfono válido.';
+    }
+    
+    // Validar fecha
+    if (!formData.date) {
+      errors.date = 'La fecha es requerida.';
+    } else {
+      const selectedDate = new Date(formData.date);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      
+      if (selectedDate < today) {
+        errors.date = 'No se pueden agendar citas en fechas pasadas.';
+      }
+    }
+    
+    // Validar hora
+    if (!formData.time) {
+      errors.time = 'La hora es requerida.';
+    }
+    
+    // Validar comentarios (límite de caracteres)
+    if (formData.comment && formData.comment.length > 500) {
+      errors.comment = 'El comentario no puede exceder 500 caracteres.';
     }
     
     if (Object.keys(errors).length > 0) {
@@ -164,12 +246,19 @@ const AppointmentsPage: React.FC = () => {
     }
     
     try {
-      // Crear la cita usando la API real
+      // Registrar el intento de envío
+      formSubmissionRateLimiter.recordAttempt(clientId);
+      
+      // Crear la cita usando la API real con datos sanitizados
       const appointmentData = {
         user: 1, // Por ahora usamos un user por defecto
+        name: sanitizeInput(formData.name),
+        email: formData.email ? formData.email.toLowerCase().trim() : undefined,
+        phone: formData.phone ? formData.phone.replace(/\s/g, '') : undefined,
+        confirmation_method: formData.confirmation_method,
         date: formData.date,
         time: formData.time,
-        notes: formData.comment || undefined,
+        notes: formData.comment ? sanitizeInput(formData.comment) : undefined,
         status: 'pending' as const
       };
 
@@ -308,9 +397,15 @@ const AppointmentsPage: React.FC = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300"
+                    maxLength={100}
+                    className={`w-full px-6 py-4 text-lg border-2 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300 ${
+                      validationErrors.name ? 'border-red-300 bg-red-50' : 'border-gray-200'
+                    }`}
                     placeholder="Tu nombre completo"
                   />
+                  {validationErrors.name && (
+                    <p className="text-red-600 text-sm mt-1">{validationErrors.name}</p>
+                  )}
                 </div>
 
                 {/* Email */}
@@ -405,7 +500,7 @@ const AppointmentsPage: React.FC = () => {
                         required
                         min={new Date().toISOString().split('T')[0]}
                         className={`w-full pl-14 pr-6 py-4 text-lg border-2 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300 ${
-                          dateValidation?.isValid === false 
+                          dateValidation?.isValid === false || validationErrors.date
                             ? 'border-red-300 bg-red-50' 
                             : 'border-gray-200'
                         }`}
@@ -413,7 +508,10 @@ const AppointmentsPage: React.FC = () => {
                     </div>
                     
                     {/* Validación de fecha */}
-                    {dateValidation && (
+                    {validationErrors.date && (
+                      <p className="text-red-600 text-sm mt-1">{validationErrors.date}</p>
+                    )}
+                    {dateValidation && !validationErrors.date && (
                       <div className={`mt-2 p-3 rounded-lg flex items-center gap-2 ${
                         dateValidation.isValid 
                           ? 'bg-green-50 text-green-700' 
@@ -438,7 +536,9 @@ const AppointmentsPage: React.FC = () => {
                         onChange={handleInputChange}
                         required
                         disabled={!formData.date || loadingTimes}
-                        className="w-full pl-14 pr-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300 appearance-none disabled:bg-gray-100 disabled:cursor-not-allowed"
+                        className={`w-full pl-14 pr-6 py-4 text-lg border-2 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300 appearance-none disabled:bg-gray-100 disabled:cursor-not-allowed ${
+                          validationErrors.time ? 'border-red-300 bg-red-50' : 'border-gray-200'
+                        }`}
                       >
                         <option value="">
                           {!formData.date ? 'Primero selecciona una fecha' : 
@@ -452,6 +552,9 @@ const AppointmentsPage: React.FC = () => {
                         ))}
                       </select>
                     </div>
+                    {validationErrors.time && (
+                      <p className="text-red-600 text-sm mt-1">{validationErrors.time}</p>
+                    )}
                   </div>
                   
                   {/* Información sobre disponibilidad */}
@@ -489,15 +592,27 @@ const AppointmentsPage: React.FC = () => {
                 <div>
                   <label className="block text-lg font-medium text-gray-700 mb-3">
                     Mensaje adicional
+                    <span className="text-sm text-gray-500 font-normal"> (máximo 500 caracteres)</span>
                   </label>
                   <textarea
                     name="comment"
                     value={formData.comment}
                     onChange={handleInputChange}
                     rows={4}
-                    className="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300 resize-none"
+                    maxLength={500}
+                    className={`w-full px-6 py-4 text-lg border-2 rounded-xl focus:ring-2 focus:ring-[#D4B483] focus:border-[#D4B483] transition-all duration-300 resize-none ${
+                      validationErrors.comment ? 'border-red-300 bg-red-50' : 'border-gray-200'
+                    }`}
                     placeholder="Cuéntanos sobre tu boda, estilo preferido, o cualquier pregunta que tengas..."
                   />
+                  <div className="flex justify-between items-center mt-1">
+                    {validationErrors.comment && (
+                      <p className="text-red-600 text-sm">{validationErrors.comment}</p>
+                    )}
+                    <p className="text-gray-500 text-sm ml-auto">
+                      {formData.comment.length}/500 caracteres
+                    </p>
+                  </div>
                 </div>
 
                 {/* Botón de envío */}
