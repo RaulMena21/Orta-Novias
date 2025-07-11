@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, Heart, Clock, Phone, Mail, MapPin, Users, Gift, Camera, Calendar } from 'lucide-react';
+import { Star, Heart, Clock, Phone, Mail, MapPin, Users, Gift, Camera, Calendar, Navigation } from 'lucide-react';
+import EnhancedMap from '../components/EnhancedMap';
+import '../styles/map.css';
 
 const HomePage: React.FC = () => {
   return (
@@ -93,7 +95,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Story Section */}
-      <section className="py-24 bg-gradient-to-b from-white to-[#FAF7F4]">
+      <section className="py-20 bg-gradient-to-b from-white to-[#FAF7F4]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-4 mb-6">
@@ -175,7 +177,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Featured Catalog */}
-      <section className="py-24 bg-gradient-to-b from-[#F8F5F2] to-white">
+      <section className="py-20 bg-gradient-to-b from-[#F8F5F2] to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-4 mb-6">
@@ -272,7 +274,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 bg-gradient-to-b from-white to-[#FAF7F4]">
+      <section className="py-20 bg-gradient-to-b from-white to-[#FAF7F4]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-4 mb-6">
@@ -358,7 +360,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Services */}
-      <section className="py-24 bg-gradient-to-b from-[#F8F5F2] to-white">
+      <section className="py-20 bg-gradient-to-b from-[#F8F5F2] to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-4 mb-6">
@@ -378,35 +380,38 @@ const HomePage: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {[
               {
-                icon: Gift,
+                image: "/asesoriaPersonalizada.jpg",
                 title: "Asesoría Personalizada",
                 description: "Consultoría exclusiva uno a uno para descubrir el vestido que refleje perfectamente tu esencia única y realce tu belleza natural.",
                 features: ["Sesión privada", "Análisis de estilo", "Recomendaciones expertas"]
               },
               {
-                icon: Clock,
+                image: "/ajustesDeAltaCostura.jpg",
                 title: "Ajustes de Alta Costura",
                 description: "Modificaciones artesanales realizadas por maestros sastres para garantizar un ajuste impecable y una silueta de ensueño.",
                 features: ["Precisión milimétrica", "Múltiples pruebas", "Acabado perfecto"]
               },
               {
-                icon: Heart,
+                image: "/accesorioNovia.jpg",
                 title: "Accesorios Exclusivos",
                 description: "Colección curada de velos, joyas y calzado de diseñadores prestigiosos para completar tu look con elegancia atemporal.",
                 features: ["Piezas únicas", "Calidad premium", "Asesoramiento completo"]
               }
             ].map((service, index) => (
               <div key={index} className="group bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
-                {/* Header with gradient */}
-                <div className="bg-gradient-to-br from-[#8A2E3B] to-[#A13347] p-8 relative">
-                  {/* Decorative elements */}
-                  <div className="absolute top-4 right-4 w-20 h-20 bg-white/10 rounded-full"></div>
-                  <div className="absolute bottom-2 left-2 w-12 h-12 bg-white/5 rounded-full"></div>
+                {/* Header with image */}
+                <div className="relative h-64 overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                   
-                  <div className="relative">
-                    <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <service.icon className="w-10 h-10 text-white" />
-                    </div>
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#8A2E3B]/80 via-[#8A2E3B]/40 to-transparent"></div>
+                  
+                  {/* Title overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
                     <h3 className="text-2xl font-serif font-bold text-white text-center">
                       {service.title}
                     </h3>
@@ -443,30 +448,10 @@ const HomePage: React.FC = () => {
               </div>
             ))}
           </div>
-          
-          {/* Call to action section */}
-          <div className="mt-20 text-center">
-            <div className="bg-gradient-to-r from-[#8A2E3B]/5 to-[#D4B483]/5 rounded-2xl p-12">
-              <h3 className="text-3xl font-serif font-bold text-[#8A2E3B] mb-4">
-                ¿Lista para vivir tu experiencia única?
-              </h3>
-              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto font-light">
-                Agenda tu cita personalizada y descubre por qué miles de novias han confiado en nosotros 
-                para los momentos más importantes de sus vidas.
-              </p>
-              <Link 
-                to="/appointments" 
-                className="inline-flex items-center gap-4 px-12 py-5 bg-gradient-to-r from-[#8A2E3B] to-[#A13347] text-white text-xl font-semibold rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 group"
-              >
-                <span>Reservar Mi Experiencia</span>
-                <Calendar className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Location & Contact */}
+       {/* Location & Contact */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -524,15 +509,53 @@ const HomePage: React.FC = () => {
             <div>
               <div className="bg-[#F8F5F2] p-8 rounded-lg shadow-lg h-full">
                 <h3 className="text-2xl font-semibold mb-6 text-[#8A2E3B]">Mapa de Ubicación</h3>
-                <div className="h-80 bg-gradient-to-br from-[#D4B483] to-[#C4A373] rounded-lg flex items-center justify-center">
-                  <MapPin className="w-16 h-16 text-white" />
-                  <p className="text-white ml-4 font-semibold">Mapa Interactivo</p>
+                
+                <div className="h-80 rounded-lg overflow-hidden shadow-inner">
+                  <EnhancedMap className="w-full h-full" showControls={true} />
+                </div>
+                
+                <div className="mt-4 text-center">
+                  <a
+                    href="https://maps.google.com/?q=Calle+Gorrion+13,+Puerto+Serrano,+Spain"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[#8A2E3B] hover:text-[#D4B483] transition-colors font-medium"
+                  >
+                    <Navigation className="w-4 h-4" />
+                    Ver en Google Maps
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Call to action section */}
+      <section className="py-20 bg-gradient-to-b from-white to-[#F8F5F2]">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center">
+            <div className="bg-gradient-to-r from-[#8A2E3B]/5 to-[#D4B483]/5 rounded-2xl p-12">
+              <h3 className="text-3xl font-serif font-bold text-[#8A2E3B] mb-4">
+                ¿Lista para vivir tu experiencia única?
+              </h3>
+              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto font-light">
+                Agenda tu cita personalizada y descubre por qué miles de novias han confiado en nosotros 
+                para los momentos más importantes de sus vidas.
+              </p>
+              <Link 
+                to="/appointments" 
+                className="inline-flex items-center gap-4 px-12 py-5 bg-gradient-to-r from-[#8A2E3B] to-[#A13347] text-white text-xl font-semibold rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 group"
+              >
+                <span>Reservar Mi Experiencia</span>
+                <Calendar className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+     
 
 
       {/* Footer */}
