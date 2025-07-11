@@ -33,7 +33,34 @@ const DressesPage: React.FC = () => {
         console.error('Error fetching dresses:', err);
         setError('Error al cargar los vestidos. Mostrando datos de ejemplo.');
         // Fallback a datos de ejemplo si falla la API
-      
+        const mockDresses = [
+          {
+            id: 1,
+            name: "Vestido Elegante",
+            description: "Un hermoso vestido para ocasiones especiales",
+            image: "https://images.unsplash.com/photo-1594736797933-d0c7a3d3bdbd?w=400",
+            additional_images: [
+              { id: 1, image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400", order: 1 },
+              { id: 2, image: "https://images.unsplash.com/photo-1566174043259-dde0e4e5dac0?w=400", order: 2 }
+            ],
+            style: "Elegante",
+            available: true,
+            created_at: "2024-01-01"
+          },
+          {
+            id: 2,
+            name: "Vestido Clásico",
+            description: "Diseño clásico y atemporal",
+            image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400",
+            additional_images: [
+              { id: 3, image: "https://images.unsplash.com/photo-1566174043259-dde0e4e5dac0?w=400", order: 1 }
+            ],
+            style: "Clásico",
+            available: true,
+            created_at: "2024-01-02"
+          }
+        ];
+        setDresses(mockDresses);
       } finally {
         setLoading(false);
       }
@@ -73,6 +100,8 @@ const DressesPage: React.FC = () => {
     setCurrentImageIndex(startIndex);
     setSelectedDress(dress);
     setShowEnhancedGallery(true);
+    // NO cerrar el modal de detalles - mantenemos ambos estados para mejor UX
+    // setShowModal(false);
   };
 
   const closeModal = () => {
@@ -84,7 +113,7 @@ const DressesPage: React.FC = () => {
   const closeEnhancedGallery = () => {
     setShowEnhancedGallery(false);
     setGalleryImages([]);
-    setCurrentImageIndex(0);
+    // NO resetear currentImageIndex ni selectedDress - mantener el modal de detalles
   };
 
   // Función para obtener todas las imágenes del vestido
@@ -431,12 +460,16 @@ const DressesPage: React.FC = () => {
                           alt={`${selectedDress.name} - ${currentImageIndex + 1}`}
                           className="w-full h-96 md:h-[500px] object-cover rounded-xl cursor-pointer hover:brightness-110 transition-all duration-300"
                           onClick={() => openEnhancedGallery(selectedDress, currentImageIndex)}
+                          style={{ zIndex: 10, position: 'relative' }}
                         />
                         
-                        {/* Overlay para indicar que se puede ampliar */}
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-xl flex items-center justify-center">
-                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 px-4 py-2 rounded-lg">
-                            <span className="text-sm font-medium text-gray-800">Click para ampliar</span>
+                        {/* Overlay para indicar que se puede ampliar - con z-index más bajo */}
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-xl flex items-center justify-center pointer-events-none" style={{ zIndex: 5 }}>
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 px-3 py-2 rounded-lg flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-[#8A2E3B]">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+                            </svg>
+                            <span className="text-sm font-medium text-gray-800">Ampliar</span>
                           </div>
                         </div>
                         
@@ -444,24 +477,33 @@ const DressesPage: React.FC = () => {
                         {allImages.length > 1 && (
                           <>
                             <button
-                              onClick={prevImage}
-                              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                prevImage();
+                              }}
+                              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors z-20"
                             >
                               <ChevronLeft className="w-6 h-6" />
                             </button>
                             <button
-                              onClick={nextImage}
-                              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                nextImage();
+                              }}
+                              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors z-20"
                             >
                               <ChevronRight className="w-6 h-6" />
                             </button>
                             
                             {/* Indicadores */}
-                            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
                               {allImages.map((_, index) => (
                                 <button
                                   key={index}
-                                  onClick={() => setCurrentImageIndex(index)}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setCurrentImageIndex(index);
+                                  }}
                                   className={`w-3 h-3 rounded-full transition-colors ${
                                     index === currentImageIndex 
                                       ? 'bg-white' 

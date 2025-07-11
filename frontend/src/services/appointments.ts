@@ -17,7 +17,8 @@ export interface BusinessHoursInfo {
     morning: { start: string; end: string };
     afternoon: { start: string; end: string };
   };
-  time_slots: string[];
+  time_slots?: string[]; // Opcional para compatibilidad
+  available_slots?: string[]; // Nuevo campo del API  
   timezone: string;
 }
 

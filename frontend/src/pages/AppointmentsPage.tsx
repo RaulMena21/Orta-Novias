@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Calendar, Clock, MapPin, Phone, Mail, Star, Heart, Award, CheckCircle, Loader, Users, AlertCircle } from 'lucide-react';
 import { appointmentService } from '../services/appointments';
 import { formSubmissionRateLimiter } from '../utils/rateLimiter';
@@ -46,8 +46,10 @@ const AppointmentsPage: React.FC = () => {
   const loadBusinessHours = async () => {
     try {
       const response = await appointmentService.getBusinessHours();
-      setBusinessHours(response.time_slots);
-      console.log('📅 Horarios de negocio cargados:', response.time_slots);
+      // Manejar ambos formatos del API
+      const slots = response.available_slots || response.time_slots || [];
+      setBusinessHours(slots);
+      console.log('📅 Horarios de negocio cargados:', slots);
     } catch (error) {
       console.error('❌ Error al cargar horarios de negocio:', error);
       // Usar horarios por defecto si falla la carga
@@ -287,7 +289,7 @@ const AppointmentsPage: React.FC = () => {
   };
 
   // Usar horarios de negocio o por defecto
-  const timeSlots = businessHours.length > 0 ? businessHours : [
+  const timeSlots = (businessHours && businessHours.length > 0) ? businessHours : [
     '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30',
     '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30'
   ];

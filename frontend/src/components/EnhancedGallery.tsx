@@ -16,6 +16,8 @@ const EnhancedGallery: React.FC<EnhancedGalleryProps> = ({
   onClose,
   initialIndex = 0
 }) => {
+  if (!isOpen) return null;
+
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
@@ -25,6 +27,7 @@ const EnhancedGallery: React.FC<EnhancedGalleryProps> = ({
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isAutoplay, setIsAutoplay] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
   const imageRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -45,12 +48,14 @@ const EnhancedGallery: React.FC<EnhancedGalleryProps> = ({
     setRotation(0);
     setImagePosition({ x: 0, y: 0 });
     setIsZoomed(false);
+    setImageLoading(true); // Mostrar loading cuando cambia la imagen
   }, [currentIndex]);
 
   // Reset index when opening
   useEffect(() => {
     if (isOpen) {
       setCurrentIndex(initialIndex);
+      setImageLoading(true);
     }
   }, [isOpen, initialIndex]);
 
@@ -163,12 +168,10 @@ const EnhancedGallery: React.FC<EnhancedGalleryProps> = ({
     setIsDragging(false);
   };
 
-  if (!isOpen) return null;
-
   return (
     <div 
       ref={containerRef}
-      className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center"
+      className="fixed inset-0 bg-black/95 z-[60] flex items-center justify-center"
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
@@ -244,6 +247,8 @@ const EnhancedGallery: React.FC<EnhancedGalleryProps> = ({
           onMouseDown={handleMouseDown}
           onClick={isZoomed ? undefined : () => zoomIn()}
           onDoubleClick={resetZoom}
+          onLoad={() => setImageLoading(false)}
+          onError={() => setImageLoading(false)}
           draggable={false}
         />
       </div>
@@ -309,9 +314,11 @@ const EnhancedGallery: React.FC<EnhancedGalleryProps> = ({
       </div>
 
       {/* Loading indicator */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white opacity-50"></div>
-      </div>
+      {imageLoading && (
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white opacity-50"></div>
+        </div>
+      )}
 
       {/* Help overlay */}
       <div className="absolute top-20 right-4 bg-black/70 text-white p-3 rounded-lg text-xs opacity-70 hover:opacity-100 transition-opacity duration-200">

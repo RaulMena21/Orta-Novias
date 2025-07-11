@@ -8,8 +8,67 @@ from .models import Appointment
 from .serializers import AppointmentSerializer
 from .services import NotificationService
 from .business_hours import BusinessHoursService
-from .validators import AppointmentValidator, DataValidator
+# from .validators import AppointmentValidator, DataValidator
 # from .security_monitor import SecurityMonitor
+
+# Validadores simples temporales
+class TempDataValidator:
+    @classmethod
+    def validate_date(cls, date_str, ip=None):
+        if not date_str:
+            return False, 'Fecha requerida'
+        try:
+            from datetime import datetime
+            parsed = datetime.fromisoformat(date_str.replace('Z', '+00:00'))
+            if parsed.date() < datetime.now().date():
+                return False, 'Fecha no puede ser en el pasado'
+            return True, parsed.isoformat()
+        except:
+            return False, 'Formato de fecha inválido'
+
+class TempAppointmentValidator:
+    @classmethod
+    def validate_appointment_data(cls, data, ip=None):
+        errors = []
+        clean_data = {}
+        
+        # Validaciones básicas
+        if not data.get('name'):
+            errors.append('Nombre requerido')
+        else:
+            clean_data['name'] = data['name']
+            
+        if not data.get('email'):
+            errors.append('Email requerido')
+        else:
+            clean_data['email'] = data['email']
+            
+        if not data.get('phone'):
+            errors.append('Teléfono requerido')
+        else:
+            clean_data['phone'] = data['phone']
+            
+        if not data.get('date'):
+            errors.append('Fecha requerida')
+        else:
+            clean_data['date'] = data['date']
+            
+        if not data.get('time'):
+            errors.append('Hora requerida')
+        else:
+            clean_data['time'] = data['time']
+        
+        # Validar confirmation_method
+        if not data.get('confirmation_method'):
+            errors.append('Método de confirmación requerido')
+        elif data.get('confirmation_method') not in ['email', 'whatsapp']:
+            errors.append('Método de confirmación debe ser email o whatsapp')
+        else:
+            clean_data['confirmation_method'] = data['confirmation_method']
+            
+        clean_data['comment'] = data.get('comment', '')  # Cambié message por comment según el modelo
+        
+        return len(errors) == 0, clean_data, errors
 import logging
 
 logger = logging.getLogger(__name__)
@@ -17,6 +76,7 @@ logger = logging.getLogger(__name__)
 class AppointmentViewSet(viewsets.ModelViewSet):
     queryset = Appointment.objects.all()
     serializer_class = AppointmentSerializer
+    permission_classes = [AllowAny]  # Por defecto permitir todo, luego restringir específicamente
     
     def get_queryset(self):
         """
@@ -43,13 +103,15 @@ class AppointmentViewSet(viewsets.ModelViewSet):
     
     def get_permissions(self):
         """
-        Permitir crear citas sin autenticación,
-        pero requerir autenticación para ver/editar (excepto para consultas específicas)
+        Permitir acceso público por defecto, solo restringir acciones administrativas
         """
-        if self.action == 'create' or (self.action == 'list' and self.request.query_params.get('date')):
-            permission_classes = [AllowAny]
-        else:
+        # Acciones que requieren autenticación
+        admin_actions = ['update', 'partial_update', 'destroy', 'get_statistics', 'security_alerts']
+        
+        if self.action in admin_actions:
             permission_classes = [IsAuthenticated]
+        else:
+            permission_classes = [AllowAny]  # Permitir todo lo demás sin autenticación
         return [permission() for permission in permission_classes]
     
     def create(self, request, *args, **kwargs):
@@ -60,7 +122,7 @@ class AppointmentViewSet(viewsets.ModelViewSet):
         logger.info(f"Appointment creation attempt from IP: {client_ip}")
         
         # Validar y sanitizar datos usando nuestro validador personalizado
-        is_valid, sanitized_data, validation_errors = AppointmentValidator.validate_appointment_data(
+        is_valid, sanitized_data, validation_errors = TempAppointmentValidator.validate_appointment_data(
             request.data, 
             client_ip
         )
@@ -114,13 +176,13 @@ class AppointmentViewSet(viewsets.ModelViewSet):
             headers=headers
         )
     
-    @action(detail=False, methods=['get'], permission_classes=[AllowAny])
+    @action(detail=False, methods=['get'])
     def business_hours(self, request):
         """Obtener información sobre horarios de negocio"""
         info = BusinessHoursService.get_business_hours_info()
         return Response(info)
     
-    @action(detail=False, methods=['get'], permission_classes=[AllowAny])
+    @action(detail=False, methods=['get'])
     def validate_date(self, request):
         """Validar si una fecha es válida para citas con validación mejorada"""
         date_param = request.query_params.get('date')
@@ -132,7 +194,7 @@ class AppointmentViewSet(viewsets.ModelViewSet):
             return Response({'error': 'Parámetro date requerido'}, status=400)
         
         # Usar nuestro validador personalizado
-        is_valid, validated_date = DataValidator.validate_date(date_param, client_ip)
+        is_valid, validated_date = TempDataValidator.validate_date(date_param, client_ip)
         
         if not is_valid:
             logger.warning(f"Invalid date validation from IP {client_ip}: {validated_date}")
@@ -163,7 +225,7 @@ class AppointmentViewSet(viewsets.ModelViewSet):
             return Response({'error': 'Error interno del servidor'}, status=500)
 
     @action(detail=False, methods=['get'], permission_classes=[IsAuthenticated])
-    def security_status(self, request):
+    def get_statistics(self, request):
         """
         Endpoint para consultar el estado de seguridad (solo para administradores)
         """

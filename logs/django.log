@@ -53,3 +53,336 @@ INFO 2025-07-11 21:49:46,801 autoreload 15568 11088 C:\Users\lopol\Videos\Proyec
 INFO 2025-07-11 21:49:47,700 autoreload 12720 3592 Watching for file changes with StatReloader
 INFO 2025-07-11 21:50:31,487 autoreload 12720 3592 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\validators.py changed, reloading.
 INFO 2025-07-11 21:50:32,901 autoreload 6932 12380 Watching for file changes with StatReloader
+INFO 2025-07-11 21:55:40,229 autoreload 6932 12380 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\validators.py changed, reloading.
+INFO 2025-07-11 21:55:51,262 autoreload 9192 7516 Watching for file changes with StatReloader
+INFO 2025-07-11 21:56:16,440 autoreload 9192 7516 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 21:56:17,471 autoreload 2624 8904 Watching for file changes with StatReloader
+INFO 2025-07-11 21:56:30,101 autoreload 2624 8904 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 21:56:31,157 autoreload 1640 12172 Watching for file changes with StatReloader
+INFO 2025-07-11 21:56:39,445 autoreload 1640 12172 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 21:56:40,466 autoreload 5532 17304 Watching for file changes with StatReloader
+INFO 2025-07-11 21:56:50,986 autoreload 5532 17304 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 21:56:52,013 autoreload 12712 15072 Watching for file changes with StatReloader
+INFO 2025-07-11 21:56:58,346 autoreload 12712 15072 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\middleware\security.py changed, reloading.
+INFO 2025-07-11 21:56:59,456 autoreload 12340 10612 Watching for file changes with StatReloader
+INFO 2025-07-11 21:57:08,899 autoreload 12340 10612 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\middleware\security.py changed, reloading.
+INFO 2025-07-11 21:57:09,913 autoreload 15860 13832 Watching for file changes with StatReloader
+INFO 2025-07-11 21:57:18,272 autoreload 15860 13832 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\middleware\security.py changed, reloading.
+INFO 2025-07-11 21:57:19,272 autoreload 12508 5732 Watching for file changes with StatReloader
+INFO 2025-07-11 21:57:30,995 autoreload 12508 5732 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\middleware\security.py changed, reloading.
+INFO 2025-07-11 21:57:31,985 autoreload 8332 10964 Watching for file changes with StatReloader
+INFO 2025-07-11 21:58:04,200 autoreload 17228 12632 Watching for file changes with StatReloader
+INFO 2025-07-11 22:02:02,158 autoreload 19952 18240 Watching for file changes with StatReloader
+WARNING 2025-07-11 22:05:56,234 security 19952 9764 Security event: 401 for IP: 127.0.0.1 URL: /api/
+WARNING 2025-07-11 22:05:56,275 log 19952 9764 Unauthorized: /api/
+WARNING 2025-07-11 22:05:56,275 basehttp 19952 9764 "GET /api/ HTTP/1.1" 401 58
+INFO 2025-07-11 22:06:24,413 basehttp 19952 9764 "GET / HTTP/1.1" 200 222
+INFO 2025-07-11 22:06:38,266 basehttp 19952 9764 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 22:06:58,766 basehttp 19952 9764 "GET /api/testimonials/ HTTP/1.1" 200 962
+WARNING 2025-07-11 22:07:10,201 security 19952 9764 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/
+WARNING 2025-07-11 22:07:10,201 log 19952 9764 Unauthorized: /api/appointments/
+WARNING 2025-07-11 22:07:10,202 basehttp 19952 9764 "GET /api/appointments/ HTTP/1.1" 401 58
+WARNING 2025-07-11 22:07:24,525 security 19952 9764 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/
+WARNING 2025-07-11 22:07:24,526 log 19952 9764 Unauthorized: /api/appointments/
+WARNING 2025-07-11 22:07:24,526 basehttp 19952 9764 "GET /api/appointments/ HTTP/1.1" 401 58
+WARNING 2025-07-11 22:07:24,537 security 19952 9764 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/
+WARNING 2025-07-11 22:07:24,537 log 19952 9764 Unauthorized: /api/appointments/
+WARNING 2025-07-11 22:07:24,538 basehttp 19952 9764 "GET /api/appointments/ HTTP/1.1" 401 58
+WARNING 2025-07-11 22:07:24,542 security 19952 9764 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/
+WARNING 2025-07-11 22:07:24,542 log 19952 9764 Unauthorized: /api/appointments/
+WARNING 2025-07-11 22:07:24,543 basehttp 19952 9764 "GET /api/appointments/ HTTP/1.1" 401 58
+WARNING 2025-07-11 22:07:24,546 security 19952 9764 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/
+WARNING 2025-07-11 22:07:24,547 log 19952 9764 Unauthorized: /api/appointments/
+WARNING 2025-07-11 22:07:24,547 basehttp 19952 9764 "GET /api/appointments/ HTTP/1.1" 401 58
+WARNING 2025-07-11 22:07:24,550 security 19952 9764 Rate limit exceeded for IP 127.0.0.1 on path /api/appointments/
+WARNING 2025-07-11 22:07:24,550 security 19952 9764 Rate limit exceeded for IP: 127.0.0.1
+WARNING 2025-07-11 22:07:24,551 security 19952 9764 Security event: 429 for IP: 127.0.0.1 URL: /api/appointments/
+WARNING 2025-07-11 22:07:24,551 log 19952 9764 Too Many Requests: /api/appointments/
+WARNING 2025-07-11 22:07:24,552 basehttp 19952 9764 "GET /api/appointments/ HTTP/1.1" 429 88
+WARNING 2025-07-11 22:07:24,557 security 19952 5204 Rate limit exceeded for IP 127.0.0.1 on path /api/appointments/
+WARNING 2025-07-11 22:07:24,558 security 19952 5204 Rate limit exceeded for IP: 127.0.0.1
+WARNING 2025-07-11 22:07:24,558 security 19952 5204 Security event: 429 for IP: 127.0.0.1 URL: /api/appointments/
+WARNING 2025-07-11 22:07:24,558 log 19952 5204 Too Many Requests: /api/appointments/
+WARNING 2025-07-11 22:07:24,559 basehttp 19952 5204 "GET /api/appointments/ HTTP/1.1" 429 88
+WARNING 2025-07-11 22:07:24,564 security 19952 19272 Rate limit exceeded for IP 127.0.0.1 on path /api/appointments/
+WARNING 2025-07-11 22:07:24,565 security 19952 19272 Rate limit exceeded for IP: 127.0.0.1
+WARNING 2025-07-11 22:07:24,565 security 19952 19272 Security event: 429 for IP: 127.0.0.1 URL: /api/appointments/
+WARNING 2025-07-11 22:07:24,565 log 19952 19272 Too Many Requests: /api/appointments/
+WARNING 2025-07-11 22:07:24,566 basehttp 19952 19272 "GET /api/appointments/ HTTP/1.1" 429 88
+WARNING 2025-07-11 22:07:24,572 security 19952 19880 Rate limit exceeded for IP 127.0.0.1 on path /api/appointments/
+WARNING 2025-07-11 22:07:24,572 security 19952 19880 Rate limit exceeded for IP: 127.0.0.1
+WARNING 2025-07-11 22:07:24,572 security 19952 19880 Security event: 429 for IP: 127.0.0.1 URL: /api/appointments/
+WARNING 2025-07-11 22:07:24,573 log 19952 19880 Too Many Requests: /api/appointments/
+WARNING 2025-07-11 22:07:24,573 basehttp 19952 19880 "GET /api/appointments/ HTTP/1.1" 429 88
+WARNING 2025-07-11 22:07:33,144 security 19952 18480 Rate limit exceeded for IP 127.0.0.1 on path /api/appointments/
+WARNING 2025-07-11 22:07:33,144 security 19952 18480 Rate limit exceeded for IP: 127.0.0.1
+WARNING 2025-07-11 22:07:33,145 security 19952 18480 Security event: 429 for IP: 127.0.0.1 URL: /api/appointments/
+WARNING 2025-07-11 22:07:33,145 log 19952 18480 Too Many Requests: /api/appointments/
+WARNING 2025-07-11 22:07:33,146 basehttp 19952 18480 "POST /api/appointments/ HTTP/1.1" 429 88
+INFO 2025-07-11 22:10:01,123 basehttp 19952 19464 "GET / HTTP/1.1" 200 222
+WARNING 2025-07-11 22:12:47,343 security 19952 19712 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/business_hours/
+WARNING 2025-07-11 22:12:47,343 log 19952 19712 Unauthorized: /api/appointments/business_hours/
+WARNING 2025-07-11 22:12:47,344 basehttp 19952 19712 "GET /api/appointments/business_hours/ HTTP/1.1" 401 58
+WARNING 2025-07-11 22:12:47,347 security 19952 19712 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/business_hours/
+WARNING 2025-07-11 22:12:47,348 log 19952 19712 Unauthorized: /api/appointments/business_hours/
+WARNING 2025-07-11 22:12:47,348 basehttp 19952 19712 "GET /api/appointments/business_hours/ HTTP/1.1" 401 58
+WARNING 2025-07-11 22:13:00,843 security 19952 19712 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/validate_date/?date=2025-07-13
+WARNING 2025-07-11 22:13:00,844 log 19952 19712 Unauthorized: /api/appointments/validate_date/
+WARNING 2025-07-11 22:13:00,847 basehttp 19952 19712 "GET /api/appointments/validate_date/?date=2025-07-13 HTTP/1.1" 401 58
+INFO 2025-07-11 22:13:00,930 basehttp 19952 8332 "GET /api/appointments/?date=2025-07-13&status=confirmed HTTP/1.1" 200 2
+WARNING 2025-07-11 22:13:13,984 security 19952 11140 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/validate_date/?date=2025-07-25
+WARNING 2025-07-11 22:13:13,985 log 19952 11140 Unauthorized: /api/appointments/validate_date/
+WARNING 2025-07-11 22:13:13,986 basehttp 19952 11140 "GET /api/appointments/validate_date/?date=2025-07-25 HTTP/1.1" 401 58
+INFO 2025-07-11 22:13:14,008 basehttp 19952 9860 "GET /api/appointments/?date=2025-07-25&status=confirmed HTTP/1.1" 200 2
+INFO 2025-07-11 22:13:22,840 basehttp 19952 19444 "OPTIONS /api/appointments/ HTTP/1.1" 200 0
+INFO 2025-07-11 22:13:22,843 views 19952 19444 Appointment creation attempt from IP: 127.0.0.1
+WARNING 2025-07-11 22:13:22,999 log 19952 19444 Bad Request: /api/appointments/
+WARNING 2025-07-11 22:13:22,999 basehttp 19952 19444 "POST /api/appointments/ HTTP/1.1" 400 51
+INFO 2025-07-11 22:13:36,290 views 19952 12632 Appointment creation attempt from IP: 127.0.0.1
+WARNING 2025-07-11 22:13:36,333 log 19952 12632 Bad Request: /api/appointments/
+WARNING 2025-07-11 22:13:36,334 basehttp 19952 12632 "POST /api/appointments/ HTTP/1.1" 400 51
+INFO 2025-07-11 22:16:36,374 views 19952 20412 Appointment creation attempt from IP: 127.0.0.1
+WARNING 2025-07-11 22:16:36,421 log 19952 20412 Bad Request: /api/appointments/
+WARNING 2025-07-11 22:16:36,422 basehttp 19952 20412 "POST /api/appointments/ HTTP/1.1" 400 51
+INFO 2025-07-11 22:17:35,511 basehttp 19952 20412 - Broken pipe from ('127.0.0.1', 53887)
+INFO 2025-07-11 22:18:22,890 autoreload 19952 18240 C:\Users\lopol\Videos\Proyectos\Orta Novias\core\settings.py changed, reloading.
+INFO 2025-07-11 22:18:27,761 autoreload 13544 18140 Watching for file changes with StatReloader
+INFO 2025-07-11 22:18:40,486 autoreload 13544 18140 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\users\views.py changed, reloading.
+INFO 2025-07-11 22:18:42,167 autoreload 15996 18680 Watching for file changes with StatReloader
+INFO 2025-07-11 22:19:20,352 autoreload 12280 9112 Watching for file changes with StatReloader
+INFO 2025-07-11 22:19:33,938 views 12280 17360 Appointment creation attempt from IP: 127.0.0.1
+WARNING 2025-07-11 22:19:33,941 log 12280 17360 Bad Request: /api/appointments/
+WARNING 2025-07-11 22:19:33,941 basehttp 12280 17360 "POST /api/appointments/ HTTP/1.1" 400 110
+INFO 2025-07-11 22:19:48,677 basehttp 12280 17360 "GET / HTTP/1.1" 200 222
+INFO 2025-07-11 22:19:59,305 views 12280 17360 Appointment creation attempt from IP: 127.0.0.1
+WARNING 2025-07-11 22:19:59,379 log 12280 17360 Bad Request: /api/appointments/
+WARNING 2025-07-11 22:19:59,379 basehttp 12280 17360 "POST /api/appointments/ HTTP/1.1" 400 51
+INFO 2025-07-11 22:20:20,848 views 12280 17360 Appointment creation attempt from IP: 127.0.0.1
+WARNING 2025-07-11 22:20:20,887 log 12280 17360 Bad Request: /api/appointments/
+WARNING 2025-07-11 22:20:20,888 basehttp 12280 17360 "POST /api/appointments/ HTTP/1.1" 400 51
+INFO 2025-07-11 22:20:43,045 autoreload 12280 9112 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 22:20:44,344 autoreload 18732 18920 Watching for file changes with StatReloader
+INFO 2025-07-11 22:20:55,169 views 18732 10804 Appointment creation attempt from IP: 127.0.0.1
+INFO 2025-07-11 22:20:55,314 views 18732 10804 Appointment 9 created successfully from IP 127.0.0.1
+INFO 2025-07-11 22:20:55,784 services 18732 10804 Email sent successfully to test@example.com
+INFO 2025-07-11 22:20:55,784 views 18732 10804 Notification sent for appointment 9
+INFO 2025-07-11 22:20:55,796 basehttp 18732 10804 "POST /api/appointments/ HTTP/1.1" 201 281
+WARNING 2025-07-11 22:21:53,215 security 18732 10444 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/business_hours/
+WARNING 2025-07-11 22:21:53,218 log 18732 10444 Unauthorized: /api/appointments/business_hours/
+WARNING 2025-07-11 22:21:53,219 basehttp 18732 10444 "GET /api/appointments/business_hours/ HTTP/1.1" 401 58
+WARNING 2025-07-11 22:21:53,221 security 18732 10444 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/business_hours/
+WARNING 2025-07-11 22:21:53,221 log 18732 10444 Unauthorized: /api/appointments/business_hours/
+WARNING 2025-07-11 22:21:53,222 basehttp 18732 10444 "GET /api/appointments/business_hours/ HTTP/1.1" 401 58
+WARNING 2025-07-11 22:22:23,372 security 18732 6492 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/validate_date/?date=2025-07-13
+WARNING 2025-07-11 22:22:23,373 log 18732 6492 Unauthorized: /api/appointments/validate_date/
+WARNING 2025-07-11 22:22:23,375 basehttp 18732 6492 "GET /api/appointments/validate_date/?date=2025-07-13 HTTP/1.1" 401 58
+INFO 2025-07-11 22:22:23,530 basehttp 18732 16596 "GET /api/appointments/?date=2025-07-13&status=confirmed HTTP/1.1" 200 2
+WARNING 2025-07-11 22:22:25,697 security 18732 16596 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/validate_date/?date=2025-07-18
+WARNING 2025-07-11 22:22:25,701 log 18732 16596 Unauthorized: /api/appointments/validate_date/
+WARNING 2025-07-11 22:22:25,701 basehttp 18732 16596 "GET /api/appointments/validate_date/?date=2025-07-18 HTTP/1.1" 401 58
+INFO 2025-07-11 22:22:25,748 basehttp 18732 6492 "GET /api/appointments/?date=2025-07-18&status=confirmed HTTP/1.1" 200 2
+INFO 2025-07-11 22:22:29,948 views 18732 6492 Appointment creation attempt from IP: 127.0.0.1
+WARNING 2025-07-11 22:22:29,949 views 18732 6492 Appointment validation failed from IP 127.0.0.1: ['Email requerido']
+WARNING 2025-07-11 22:22:29,949 log 18732 6492 Bad Request: /api/appointments/
+WARNING 2025-07-11 22:22:29,950 basehttp 18732 6492 "POST /api/appointments/ HTTP/1.1" 400 19
+INFO 2025-07-11 22:22:48,189 views 18732 6492 Appointment creation attempt from IP: 127.0.0.1
+WARNING 2025-07-11 22:22:48,189 views 18732 6492 Appointment validation failed from IP 127.0.0.1: ['Email requerido']
+WARNING 2025-07-11 22:22:48,190 log 18732 6492 Bad Request: /api/appointments/
+WARNING 2025-07-11 22:22:48,190 basehttp 18732 6492 "POST /api/appointments/ HTTP/1.1" 400 19
+WARNING 2025-07-11 22:22:49,634 security 18732 6492 Rate limit exceeded for IP 127.0.0.1 on path /api/appointments/
+WARNING 2025-07-11 22:22:49,634 security 18732 6492 Rate limit exceeded for IP: 127.0.0.1
+WARNING 2025-07-11 22:22:49,634 security 18732 6492 Security event: 429 for IP: 127.0.0.1 URL: /api/appointments/
+WARNING 2025-07-11 22:22:49,635 log 18732 6492 Too Many Requests: /api/appointments/
+WARNING 2025-07-11 22:22:49,635 basehttp 18732 6492 "POST /api/appointments/ HTTP/1.1" 429 88
+WARNING 2025-07-11 22:22:49,896 security 18732 16596 Rate limit exceeded for IP 127.0.0.1 on path /api/appointments/
+WARNING 2025-07-11 22:22:49,896 security 18732 16596 Rate limit exceeded for IP: 127.0.0.1
+WARNING 2025-07-11 22:22:49,896 security 18732 16596 Security event: 429 for IP: 127.0.0.1 URL: /api/appointments/
+WARNING 2025-07-11 22:22:49,897 log 18732 16596 Too Many Requests: /api/appointments/
+WARNING 2025-07-11 22:22:49,898 basehttp 18732 16596 "POST /api/appointments/ HTTP/1.1" 429 88
+WARNING 2025-07-11 22:22:50,113 security 18732 19596 Rate limit exceeded for IP 127.0.0.1 on path /api/appointments/
+WARNING 2025-07-11 22:22:50,114 security 18732 19596 Rate limit exceeded for IP: 127.0.0.1
+WARNING 2025-07-11 22:22:50,115 security 18732 19596 Security event: 429 for IP: 127.0.0.1 URL: /api/appointments/
+WARNING 2025-07-11 22:22:50,115 log 18732 19596 Too Many Requests: /api/appointments/
+WARNING 2025-07-11 22:22:50,116 basehttp 18732 19596 "POST /api/appointments/ HTTP/1.1" 429 88
+WARNING 2025-07-11 22:23:53,963 security 18732 8892 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/business_hours/
+WARNING 2025-07-11 22:23:53,964 log 18732 8892 Unauthorized: /api/appointments/business_hours/
+WARNING 2025-07-11 22:23:53,964 basehttp 18732 8892 "GET /api/appointments/business_hours/ HTTP/1.1" 401 58
+WARNING 2025-07-11 22:23:53,967 security 18732 8892 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/business_hours/
+WARNING 2025-07-11 22:23:53,967 log 18732 8892 Unauthorized: /api/appointments/business_hours/
+WARNING 2025-07-11 22:23:53,968 basehttp 18732 8892 "GET /api/appointments/business_hours/ HTTP/1.1" 401 58
+WARNING 2025-07-11 22:24:00,693 security 18732 8892 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/validate_date/?date=2025-07-18
+WARNING 2025-07-11 22:24:00,693 log 18732 8892 Unauthorized: /api/appointments/validate_date/
+WARNING 2025-07-11 22:24:00,694 security 18732 17012 Rate limit exceeded for IP 127.0.0.1 on path /api/appointments/
+WARNING 2025-07-11 22:24:00,694 basehttp 18732 8892 "GET /api/appointments/validate_date/?date=2025-07-18 HTTP/1.1" 401 58
+WARNING 2025-07-11 22:24:00,694 security 18732 17012 Rate limit exceeded for IP: 127.0.0.1
+WARNING 2025-07-11 22:24:00,695 security 18732 17012 Security event: 429 for IP: 127.0.0.1 URL: /api/appointments/?date=2025-07-18&status=confirmed
+WARNING 2025-07-11 22:24:00,696 log 18732 17012 Too Many Requests: /api/appointments/
+WARNING 2025-07-11 22:24:00,696 basehttp 18732 17012 "GET /api/appointments/?date=2025-07-18&status=confirmed HTTP/1.1" 429 88
+WARNING 2025-07-11 22:24:04,783 security 18732 15468 Rate limit exceeded for IP 127.0.0.1 on path /api/appointments/
+WARNING 2025-07-11 22:24:04,784 security 18732 15468 Rate limit exceeded for IP: 127.0.0.1
+WARNING 2025-07-11 22:24:04,784 security 18732 15468 Security event: 429 for IP: 127.0.0.1 URL: /api/appointments/
+WARNING 2025-07-11 22:24:04,784 log 18732 15468 Too Many Requests: /api/appointments/
+WARNING 2025-07-11 22:24:04,785 basehttp 18732 15468 "POST /api/appointments/ HTTP/1.1" 429 88
+WARNING 2025-07-11 22:24:06,108 security 18732 19520 Rate limit exceeded for IP 127.0.0.1 on path /api/appointments/
+WARNING 2025-07-11 22:24:06,108 security 18732 19520 Rate limit exceeded for IP: 127.0.0.1
+WARNING 2025-07-11 22:24:06,108 security 18732 19520 Security event: 429 for IP: 127.0.0.1 URL: /api/appointments/
+WARNING 2025-07-11 22:24:06,109 log 18732 19520 Too Many Requests: /api/appointments/
+WARNING 2025-07-11 22:24:06,109 basehttp 18732 19520 "POST /api/appointments/ HTTP/1.1" 429 88
+INFO 2025-07-11 22:24:31,632 autoreload 18732 18920 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\users\views.py changed, reloading.
+INFO 2025-07-11 22:24:33,650 autoreload 15920 19640 Watching for file changes with StatReloader
+INFO 2025-07-11 22:25:04,182 autoreload 15920 19640 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\middleware\security.py changed, reloading.
+INFO 2025-07-11 22:25:06,992 autoreload 14240 20052 Watching for file changes with StatReloader
+WARNING 2025-07-11 22:27:18,954 security 14240 19588 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/business_hours/
+WARNING 2025-07-11 22:27:18,959 log 14240 19588 Unauthorized: /api/appointments/business_hours/
+WARNING 2025-07-11 22:27:18,960 basehttp 14240 19588 "GET /api/appointments/business_hours/ HTTP/1.1" 401 58
+WARNING 2025-07-11 22:27:24,889 security 14240 19588 Security event: 401 for IP: 127.0.0.1 URL: /api/appointments/business_hours/
+WARNING 2025-07-11 22:27:24,890 log 14240 19588 Unauthorized: /api/appointments/business_hours/
+WARNING 2025-07-11 22:27:24,890 basehttp 14240 19588 "GET /api/appointments/business_hours/ HTTP/1.1" 401 58
+INFO 2025-07-11 22:27:52,607 autoreload 14240 20052 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 22:27:53,908 autoreload 20080 16616 Watching for file changes with StatReloader
+INFO 2025-07-11 22:28:09,974 autoreload 20080 16616 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 22:28:11,443 autoreload 3640 14880 Watching for file changes with StatReloader
+INFO 2025-07-11 22:28:21,833 autoreload 3640 14880 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 22:28:22,981 autoreload 11776 13992 Watching for file changes with StatReloader
+INFO 2025-07-11 22:28:34,453 autoreload 11776 13992 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\appointments\views.py changed, reloading.
+INFO 2025-07-11 22:28:35,579 autoreload 2460 16484 Watching for file changes with StatReloader
+INFO 2025-07-11 22:29:02,467 basehttp 2460 16308 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 22:29:15,536 views 2460 16308 Date validation request from IP 127.0.0.1: 2025-07-18
+ERROR 2025-07-11 22:29:15,536 views 2460 16308 Error in date validation from IP 127.0.0.1: 'NoneType' object has no attribute 'weekday'
+ERROR 2025-07-11 22:29:15,539 log 2460 16308 Internal Server Error: /api/appointments/validate_date/
+ERROR 2025-07-11 22:29:15,540 basehttp 2460 16308 "GET /api/appointments/validate_date/?date=2025-07-18 HTTP/1.1" 500 38
+INFO 2025-07-11 22:30:38,965 autoreload 19576 18328 Watching for file changes with StatReloader
+INFO 2025-07-11 22:30:45,067 basehttp 19576 17608 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 22:30:45,070 basehttp 19576 19408 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 22:31:06,794 basehttp 19576 3032 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 22:31:06,796 basehttp 19576 18984 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 22:31:30,912 basehttp 19576 5844 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 22:31:30,915 basehttp 19576 17016 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 22:33:32,006 basehttp 19576 11568 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 22:33:32,011 basehttp 19576 18464 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 22:56:23,426 basehttp 19576 16740 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 22:58:59,923 autoreload 19576 18328 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\middleware\security.py changed, reloading.
+INFO 2025-07-11 22:59:01,836 autoreload 10464 13032 Watching for file changes with StatReloader
+INFO 2025-07-11 22:59:14,066 autoreload 14068 9016 Watching for file changes with StatReloader
+INFO 2025-07-11 22:59:19,742 basehttp 14068 10640 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 22:59:19,746 basehttp 14068 11980 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 22:59:27,289 views 14068 19428 Date validation request from IP 127.0.0.1: 2025-07-18
+ERROR 2025-07-11 22:59:27,290 views 14068 19428 Error in date validation from IP 127.0.0.1: 'NoneType' object has no attribute 'weekday'
+ERROR 2025-07-11 22:59:27,300 log 14068 19428 Internal Server Error: /api/appointments/validate_date/
+ERROR 2025-07-11 22:59:27,301 basehttp 14068 19428 "GET /api/appointments/validate_date/?date=2025-07-18 HTTP/1.1" 500 38
+INFO 2025-07-11 22:59:27,716 basehttp 14068 320 "GET /api/appointments/?date=2025-07-18&status=confirmed HTTP/1.1" 200 2
+INFO 2025-07-11 22:59:30,731 views 14068 320 Appointment creation attempt from IP: 127.0.0.1
+INFO 2025-07-11 22:59:31,303 views 14068 320 Appointment 10 created successfully from IP 127.0.0.1
+INFO 2025-07-11 22:59:31,311 services 14068 320 Email sent successfully to lopoluz2148@gmail.com
+INFO 2025-07-11 22:59:31,311 views 14068 320 Notification sent for appointment 10
+INFO 2025-07-11 22:59:31,350 basehttp 14068 320 "POST /api/appointments/ HTTP/1.1" 201 274
+INFO 2025-07-11 23:00:14,166 basehttp 14068 18704 "GET / HTTP/1.1" 200 222
+INFO 2025-07-11 23:00:14,169 basehttp 14068 12804 "GET / HTTP/1.1" 200 222
+WARNING 2025-07-11 23:00:20,656 log 14068 12804 Not Found: /favicon.ico
+WARNING 2025-07-11 23:00:20,657 basehttp 14068 12804 "GET /favicon.ico HTTP/1.1" 404 2682
+WARNING 2025-07-11 23:00:20,663 log 14068 2888 Not Found: /favicon.ico
+WARNING 2025-07-11 23:00:20,664 basehttp 14068 2888 "GET /favicon.ico HTTP/1.1" 404 2682
+INFO 2025-07-11 23:00:22,949 basehttp 14068 18704 "GET /admin/ HTTP/1.1" 200 14988
+INFO 2025-07-11 23:00:23,142 basehttp 14068 10724 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:23,144 basehttp 14068 19616 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:23,159 basehttp 14068 18704 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:23,512 basehttp 14068 10724 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:23,513 basehttp 14068 3988 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:23,520 basehttp 14068 19616 "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:23,548 basehttp 14068 18704 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:23,601 basehttp 14068 18704 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:23,601 basehttp 14068 19616 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:28,683 basehttp 14068 18704 "GET /admin/appointments/appointment/ HTTP/1.1" 200 20207
+INFO 2025-07-11 23:00:28,808 basehttp 14068 18704 "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:28,819 basehttp 14068 18704 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:28,820 basehttp 14068 3988 "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:28,820 basehttp 14068 10724 "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:28,825 basehttp 14068 18704 "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:28,826 basehttp 14068 3988 "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:28,827 basehttp 14068 10724 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:28,827 basehttp 14068 5124 "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:28,830 basehttp 14068 11980 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:28,848 basehttp 14068 11980 "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:28,853 basehttp 14068 5124 "GET /static/admin/img/icon-no.svg HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:28,878 basehttp 14068 5124 "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:29,466 basehttp 14068 19616 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-11 23:00:29,495 basehttp 14068 19616 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+INFO 2025-07-11 23:00:29,496 basehttp 14068 5124 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+INFO 2025-07-11 23:01:37,057 basehttp 14068 18248 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:01:37,111 basehttp 14068 17904 "GET /media/dresses/orta2.PNG HTTP/1.1" 304 0
+INFO 2025-07-11 23:01:37,112 basehttp 14068 20012 "GET /media/dresses/41.PNG HTTP/1.1" 304 0
+INFO 2025-07-11 23:01:37,135 basehttp 14068 17016 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:01:40,354 basehttp 14068 17016 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 23:01:40,357 basehttp 14068 18248 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 23:01:43,466 basehttp 14068 18248 "GET /api/testimonials/ HTTP/1.1" 200 962
+INFO 2025-07-11 23:01:43,532 basehttp 14068 20012 "GET /media/testimonials/orta2.PNG HTTP/1.1" 304 0
+INFO 2025-07-11 23:01:43,593 basehttp 14068 17016 "GET /api/testimonials/ HTTP/1.1" 200 962
+INFO 2025-07-11 23:01:50,140 basehttp 14068 17016 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:01:50,170 basehttp 14068 18248 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:01:59,784 basehttp 14068 20012 "GET /media/dresses/additional/Imagen_de_WhatsApp_2025-06-06_a_las_20.11.46_1b031514.jpg HTTP/1.1" 200 176574
+INFO 2025-07-11 23:10:35,785 basehttp 14068 16520 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 23:10:35,788 basehttp 14068 16804 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 23:10:38,116 basehttp 14068 16804 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:10:38,178 basehttp 14068 16520 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:15:47,505 basehttp 14068 17984 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:15:47,759 basehttp 14068 19884 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:16:11,974 basehttp 14068 17968 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:16:12,112 basehttp 14068 17072 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:21:56,147 basehttp 14068 8344 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:21:56,560 basehttp 14068 18816 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:24:20,690 basehttp 14068 10736 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:24:20,917 basehttp 14068 19892 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:26:51,764 basehttp 14068 20068 "GET /api/testimonials/ HTTP/1.1" 200 962
+INFO 2025-07-11 23:26:52,018 basehttp 14068 11568 "GET /api/testimonials/ HTTP/1.1" 200 962
+INFO 2025-07-11 23:27:07,669 basehttp 14068 11568 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 23:27:07,679 basehttp 14068 20068 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 23:27:08,442 basehttp 14068 20068 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:27:08,586 basehttp 14068 11568 "GET /api/dresses/ HTTP/1.1" 200 679
+INFO 2025-07-11 23:27:09,853 basehttp 14068 11568 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 23:27:09,856 basehttp 14068 20068 "GET /api/appointments/business_hours/ HTTP/1.1" 200 287
+INFO 2025-07-11 23:27:19,533 views 14068 18648 Date validation request from IP 127.0.0.1: 2025-07-23
+ERROR 2025-07-11 23:27:19,573 views 14068 18648 Error in date validation from IP 127.0.0.1: 'NoneType' object has no attribute 'weekday'
+ERROR 2025-07-11 23:27:19,732 log 14068 18648 Internal Server Error: /api/appointments/validate_date/
+ERROR 2025-07-11 23:27:19,749 basehttp 14068 18648 "GET /api/appointments/validate_date/?date=2025-07-23 HTTP/1.1" 500 38
+INFO 2025-07-11 23:27:19,948 basehttp 14068 16736 "GET /api/appointments/?date=2025-07-23&status=confirmed HTTP/1.1" 200 2
+INFO 2025-07-11 23:27:23,600 views 14068 3600 Appointment creation attempt from IP: 127.0.0.1
+INFO 2025-07-11 23:27:24,040 views 14068 3600 Appointment 11 created successfully from IP 127.0.0.1
+INFO 2025-07-11 23:27:29,987 __init__ 14068 3600 -- BEGIN Twilio API Request --
+INFO 2025-07-11 23:27:29,988 __init__ 14068 3600 POST Request: https://api.twilio.com/2010-04-01/Accounts/tu-account-sid/Messages.json
+INFO 2025-07-11 23:27:30,014 __init__ 14068 3600 Headers:
+INFO 2025-07-11 23:27:30,015 __init__ 14068 3600 Content-Type : application/x-www-form-urlencoded
+INFO 2025-07-11 23:27:30,015 __init__ 14068 3600 Accept : application/json
+INFO 2025-07-11 23:27:30,016 __init__ 14068 3600 User-Agent : twilio-python/9.6.5 (Windows AMD64) Python/3.13.5
+INFO 2025-07-11 23:27:30,031 __init__ 14068 3600 X-Twilio-Client : python-9.6.5
+INFO 2025-07-11 23:27:30,032 __init__ 14068 3600 Accept-Charset : utf-8
+INFO 2025-07-11 23:27:30,032 __init__ 14068 3600 -- END Twilio API Request --
+INFO 2025-07-11 23:27:30,707 __init__ 14068 3600 Response Status Code: 401
+INFO 2025-07-11 23:27:30,708 __init__ 14068 3600 Response Headers: {'Content-Type': 'application/json', 'Content-Length': '134', 'Connection': 'keep-alive', 'Date': 'Fri, 11 Jul 2025 21:27:30 GMT', 'X-API-Domain': 'api.twilio.com', 'X-Verification-Disclosure': 'Message Accepted. Pending content verification for US/Canada destination numbers:', 'Www-Authenticate': 'Basic realm="Twilio API"', 'Twilio-Request-Id': 'RQ91199f1b2bcbc30aee7e3d4d549358df', 'X-Shenanigans': 'none', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match, If-Unmodified-Since, Idempotency-Key', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS', 'Access-Control-Expose-Headers': 'ETag', 'Access-Control-Allow-Credentials': 'true', 'X-Powered-By': 'AT-5000', 'X-Home-Region': 'us1', 'X-Cache': 'Error from cloudfront', 'Via': '1.1 fc84dd3d81f101f017733b4720a09e8c.cloudfront.net (CloudFront)', 'X-Amz-Cf-Pop': 'MAD51-C2', 'X-Amz-Cf-Id': 'WCti6i8sSm3PuKv-_9qX9ywfezIH7S68Jln8kXNZOvPTt4YfNRSEXA=='}
+ERROR 2025-07-11 23:27:30,725 services 14068 3600 Error sending WhatsApp: 
+[31m[49mHTTP Error[0m [37m[49mYour request was:[0m
+
+[36m[49mPOST /Accounts/tu-account-sid/Messages.json[0m
+
+[37m[49mTwilio returned the following information:[0m
+
+[34m[49mUnable to create record: Authentication Error - invalid username[0m
+
+[37m[49mMore information may be available here:[0m
+
+[34m[49mhttps://www.twilio.com/docs/errors/20003[0m
+
+
+WARNING 2025-07-11 23:27:30,726 views 14068 3600 Failed to send notification for appointment 11
+INFO 2025-07-11 23:27:30,727 basehttp 14068 3600 "POST /api/appointments/ HTTP/1.1" 201 285
+INFO 2025-07-11 23:27:34,795 basehttp 14068 14272 "GET /admin/appointments/appointment/ HTTP/1.1" 200 20804
+INFO 2025-07-11 23:27:35,052 basehttp 14068 14272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-11 23:27:45,663 basehttp 14068 14272 "GET /admin/appointments/appointment/11/change/ HTTP/1.1" 200 18143
+INFO 2025-07-11 23:27:45,842 basehttp 14068 14272 "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2025-07-11 23:27:45,847 basehttp 14068 18848 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 304 0
+INFO 2025-07-11 23:27:45,848 basehttp 14068 20280 "GET /static/admin/js/calendar.js HTTP/1.1" 304 0
+INFO 2025-07-11 23:27:45,870 basehttp 14068 20280 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+INFO 2025-07-11 23:27:45,896 basehttp 14068 14272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-11 23:27:45,955 basehttp 14068 14272 "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2025-07-11 23:27:45,964 basehttp 14068 14272 "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+INFO 2025-07-11 23:27:46,169 basehttp 14068 20280 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 304 0
+INFO 2025-07-11 23:27:46,330 basehttp 14068 14272 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
