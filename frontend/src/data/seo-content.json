@@ -1,0 +1,194 @@
+{
+  "pages": {
+    "home": {
+      "title": "Orta Novias Madrid - Vestidos de Novia Únicos y Exclusivos",
+      "description": "Descubre la colección más exclusiva de vestidos de novia en Madrid. Orta Novias ofrece diseños únicos, asesoramiento personalizado y la experiencia perfecta para tu día especial.",
+      "keywords": "vestidos de novia Madrid, vestidos novia exclusivos, tienda vestidos novia, asesoramiento novias Madrid, vestidos únicos",
+      "canonicalUrl": "/",
+      "breadcrumbs": [
+        { "name": "Inicio", "url": "/" }
+      ]
+    },
+    "dresses": {
+      "title": "Vestidos de Novia - Colección Exclusiva | Orta Novias Madrid",
+      "description": "Explora nuestra exclusiva colección de vestidos de novia. Desde clásicos atemporales hasta diseños modernos. Encuentra el vestido perfecto en Orta Novias Madrid.",
+      "keywords": "colección vestidos novia, vestidos clásicos, vestidos modernos, vestidos bohemios, vestidos princesa",
+      "canonicalUrl": "/vestidos",
+      "breadcrumbs": [
+        { "name": "Inicio", "url": "/" },
+        { "name": "Vestidos", "url": "/vestidos" }
+      ]
+    },
+    "appointments": {
+      "title": "Reservar Cita - Asesoramiento Personalizado | Orta Novias",
+      "description": "Reserva tu cita personalizada en Orta Novias Madrid. Asesoramiento experto, pruebas privadas y atención exclusiva para encontrar tu vestido de novia perfecto.",
+      "keywords": "reservar cita vestido novia, asesoramiento personalizado, prueba vestidos Madrid, cita privada novias",
+      "canonicalUrl": "/cita",
+      "breadcrumbs": [
+        { "name": "Inicio", "url": "/" },
+        { "name": "Reservar Cita", "url": "/cita" }
+      ]
+    },
+    "testimonials": {
+      "title": "Testimonios - Experiencias Reales de Novias | Orta Novias",
+      "description": "Lee las experiencias reales de novias que eligieron Orta Novias para su día especial. Testimonios auténticos sobre nuestro servicio y vestidos únicos.",
+      "keywords": "testimonios novias, reseñas vestidos novia, experiencias reales, opiniones clientes Orta Novias",
+      "canonicalUrl": "/testimonios",
+      "breadcrumbs": [
+        { "name": "Inicio", "url": "/" },
+        { "name": "Testimonios", "url": "/testimonios" }
+      ]
+    }
+  },
+  "categories": {
+    "clasico": {
+      "title": "Vestidos de Novia Clásicos - Elegancia Atemporal | Orta Novias",
+      "description": "Vestidos de novia clásicos que nunca pasan de moda. Elegancia atemporal, siluetas perfectas y detalles refinados para novias que aman el estilo tradicional.",
+      "keywords": "vestidos novia clásicos, vestidos elegantes tradicionales, diseños atemporales novia",
+      "content": {
+        "heading": "Vestidos de Novia Clásicos",
+        "intro": "Los vestidos de novia clásicos representan la elegancia que trasciende el tiempo. En Orta Novias, cada diseño clásico es una obra maestra de sofisticación y tradición.",
+        "features": [
+          "Siluetas atemporales que favorecen todas las figuras",
+          "Tejidos de lujo como satén, encaje francés y organza",
+          "Detalles artesanales únicos y exclusivos",
+          "Personalización según tus preferencias"
+        ]
+      }
+    },
+    "moderno": {
+      "title": "Vestidos de Novia Modernos - Vanguardia y Estilo | Orta Novias",
+      "description": "Vestidos de novia modernos para novias vanguardistas. Diseños contemporáneos, líneas innovadoras y estilo único para tu día especial.",
+      "keywords": "vestidos novia modernos, diseños vanguardistas, vestidos contemporáneos novia",
+      "content": {
+        "heading": "Vestidos de Novia Modernos",
+        "intro": "Para novias que buscan romper moldes, nuestros vestidos modernos combinan innovación con elegancia, creando looks únicos y memorables.",
+        "features": [
+          "Diseños vanguardistas y únicos",
+          "Líneas arquitectónicas y minimalistas",
+          "Tejidos innovadores y texturas modernas",
+          "Detalles contemporáneos sorprendentes"
+        ]
+      }
+    },
+    "bohemio": {
+      "title": "Vestidos de Novia Bohemios - Romance y Libertad | Orta Novias",
+      "description": "Vestidos de novia bohemios para bodas románticas. Estilo boho chic con encajes delicados, tejidos fluidos y detalles únicos.",
+      "keywords": "vestidos novia bohemios, estilo boho chic, vestidos románticos aire libre",
+      "content": {
+        "heading": "Vestidos de Novia Bohemios",
+        "intro": "El estilo bohemio celebra la libertad y el romance. Perfectos para bodas al aire libre y novias que aman la naturalidad elegante.",
+        "features": [
+          "Tejidos fluidos y ligeros",
+          "Encajes delicados y bordados artesanales",
+          "Siluetas libres y cómodas",
+          "Detalles florales y naturales"
+        ]
+      }
+    },
+    "princesa": {
+      "title": "Vestidos de Novia Princesa - Glamour Máximo | Orta Novias",
+      "description": "Vestidos de novia estilo princesa para sentirte como realeza. Faldas voluminosas, corsés perfectos y máximo glamour para tu día especial.",
+      "keywords": "vestidos novia princesa, vestidos glamourosos, faldas voluminosas novia",
+      "content": {
+        "heading": "Vestidos de Novia Princesa",
+        "intro": "Para novias que sueñan con sentirse como una verdadera princesa, nuestros vestidos ofrecen máximo glamour y elegancia real.",
+        "features": [
+          "Faldas voluminosas espectaculares",
+          "Corsés perfectamente estructurados",
+          "Detalles de lujo y pedrería",
+          "Colas dramáticas impresionantes"
+        ]
+      }
+    }
+  },
+  "faq": [
+    {
+      "question": "¿Cuánto tiempo necesito para encargar mi vestido de novia?",
+      "answer": "Recomendamos reservar tu vestido con 6-8 meses de antelación. Esto permite tiempo suficiente para personalización, ajustes y cualquier modificación que desees realizar."
+    },
+    {
+      "question": "¿Ofrecen servicio de personalización?",
+      "answer": "Sí, todos nuestros vestidos pueden personalizarse. Desde cambios en el escote hasta ajustes en la falda, trabajamos contigo para crear el vestido perfecto según tus preferencias."
+    },
+    {
+      "question": "¿Qué incluye el servicio de asesoramiento?",
+      "answer": "Nuestro asesoramiento incluye consulta personalizada, análisis de tu figura, recomendaciones de estilo, coordinación de accesorios y seguimiento durante todo el proceso."
+    },
+    {
+      "question": "¿Realizan ajustes después de la compra?",
+      "answer": "Por supuesto. Incluimos hasta 3 sesiones de ajuste para garantizar que tu vestido quede perfecto. Nuestro equipo de expertos se asegura de que te sientes cómoda y radiante."
+    },
+    {
+      "question": "¿Qué tallas manejan?",
+      "answer": "Trabajamos con todas las tallas desde la 34 hasta la 56. Además, todos nuestros vestidos se ajustan específicamente a tus medidas para un fit perfecto."
+    },
+    {
+      "question": "¿Puedo ver los vestidos antes de comprar?",
+      "answer": "Absolutamente. Ofrecemos citas privadas donde puedes ver, tocar y probarte los vestidos. También tenemos un showroom exclusivo para que veas nuestra colección completa."
+    }
+  ],
+  "business": {
+    "name": "Orta Novias",
+    "description": "Tienda especializada en vestidos de novia exclusivos en Madrid. Ofrecemos diseños únicos, asesoramiento personalizado y la mejor experiencia para tu día especial.",
+    "address": {
+      "street": "Calle de la Elegancia, 123",
+      "city": "Madrid",
+      "postalCode": "28001",
+      "country": "España"
+    },
+    "contact": {
+      "phone": "+34 91 123 45 67",
+      "email": "info@ortanovias.com",
+      "website": "https://www.ortanovias.com"
+    },
+    "openingHours": [
+      "Lunes: 10:00-19:00",
+      "Martes: 10:00-19:00", 
+      "Miércoles: 10:00-19:00",
+      "Jueves: 10:00-19:00",
+      "Viernes: 10:00-20:00",
+      "Sábado: 10:00-20:00",
+      "Domingo: 12:00-18:00"
+    ],
+    "socialMedia": {
+      "instagram": "https://instagram.com/ortanovias",
+      "facebook": "https://facebook.com/ortanovias",
+      "pinterest": "https://pinterest.com/ortanovias"
+    }
+  },
+  "seoTips": {
+    "imageAlt": {
+      "dresses": [
+        "Vestido de novia {name} - Colección {category} Orta Novias Madrid",
+        "Diseño {style} vestido novia exclusivo - {name} Orta Novias",
+        "Vestido novia {category} Madrid - {name} diseño único"
+      ],
+      "testimonials": [
+        "Testimonio novia satisfecha Orta Novias Madrid",
+        "Reseña real vestido novia - Experiencia Orta Novias",
+        "Cliente feliz Orta Novias - Testimonio auténtico"
+      ]
+    },
+    "internalLinks": [
+      {
+        "from": "home",
+        "to": "dresses",
+        "anchor": "Descubre nuestra colección exclusiva de vestidos",
+        "context": "Explora nuestra selección de vestidos únicos"
+      },
+      {
+        "from": "dresses",
+        "to": "appointments",
+        "anchor": "Reserva tu cita personalizada",
+        "context": "¿Te gusta este estilo? Reserva una cita para probarlo"
+      },
+      {
+        "from": "testimonials",
+        "to": "appointments",
+        "anchor": "Vive tu propia experiencia única",
+        "context": "Únete a nuestras novias satisfechas"
+      }
+    ]
+  }
+}

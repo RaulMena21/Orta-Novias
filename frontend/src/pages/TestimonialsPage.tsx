@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Calendar, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { BrideTestimonial } from '../types';
 import { getTestimonials } from '../services/testimonials';
+import SEO from '../components/SEO';
 
 const TestimonialsPage: React.FC = () => {
   const [testimonials, setTestimonials] = useState<BrideTestimonial[]>([]);
@@ -53,6 +54,14 @@ const TestimonialsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#FAF7F4]">
+      {/* SEO Component */}
+      <SEO
+        title="Testimonios de Novias | Orta Novias"
+        description="Descubre las experiencias reales de las novias que confiaron en Orta Novias. Lee sus testimonios y vive la elegancia y confianza que ofrecemos."
+        url="/testimonials"
+        image="/path-to-your-default-image.jpg"
+      />
+
       {/* Error Message */}
       {error && (
         <div className="bg-red-50 border border-red-200 rounded-lg p-4 mx-4 mt-4">

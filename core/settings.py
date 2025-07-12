@@ -65,11 +65,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'model_utils',
     'backend.apps.users',
     'backend.apps.store',
     'backend.apps.appointments',
     'backend.apps.testimonials',
     'backend.apps.notifications',
+    'backend.apps.core',
     'rest_framework',
 ]
 
@@ -159,21 +161,30 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
+# Database configuration
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
 
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ['POSTGRES_DB'],
-        'USER': os.environ['POSTGRES_USER'],
-        'PASSWORD': os.environ['POSTGRES_PASSWORD'],
-        'HOST': os.environ['POSTGRES_HOST'],
-        'PORT': os.environ['POSTGRES_PORT'],
+# Use SQLite for development, PostgreSQL for production
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('POSTGRES_DB', 'ortanovias'),
+            'USER': os.environ.get('POSTGRES_USER', 'postgres'),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD', ''),
+            'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+            'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+        }
+    }
 
 
 # Password validation

@@ -1096,3 +1096,33 @@ INFO 2025-07-12 02:56:30,158 autoreload 1604 15928 Watching for file changes wit
 INFO 2025-07-12 02:59:01,943 autoreload 1604 15928 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\users\jwt_serializers.py changed, reloading.
 WARNING 2025-07-12 02:59:06,984 signals 15956 20268 model_utils no está instalado. El tracking de cambios en citas no estará disponible.
 INFO 2025-07-12 02:59:07,073 autoreload 15956 20268 Watching for file changes with StatReloader
+INFO 2025-07-12 03:21:04,456 autoreload 15956 20268 C:\Users\lopol\Videos\Proyectos\Orta Novias\core\urls.py changed, reloading.
+WARNING 2025-07-12 03:21:12,821 signals 19548 1976 model_utils no está instalado. El tracking de cambios en citas no estará disponible.
+INFO 2025-07-12 03:21:12,972 autoreload 19548 1976 Watching for file changes with StatReloader
+INFO 2025-07-12 03:22:40,704 autoreload 19548 1976 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\core\monitoring.py changed, reloading.
+WARNING 2025-07-12 03:22:43,810 signals 6452 14892 model_utils no está instalado. El tracking de cambios en citas no estará disponible.
+INFO 2025-07-12 03:22:43,856 autoreload 6452 14892 Watching for file changes with StatReloader
+WARNING 2025-07-12 17:24:33,614 signals 18552 3600 model_utils no está instalado. El tracking de cambios en citas no estará disponible.
+WARNING 2025-07-12 17:27:36,314 signals 3684 19128 model_utils no está instalado. El tracking de cambios en citas no estará disponible.
+WARNING 2025-07-12 17:27:38,802 signals 13736 11656 model_utils no está instalado. El tracking de cambios en citas no estará disponible.
+INFO 2025-07-12 17:27:38,888 autoreload 13736 11656 Watching for file changes with StatReloader
+INFO 2025-07-12 17:31:32,891 autoreload 13736 11656 C:\Users\lopol\Videos\Proyectos\Orta Novias\core\settings.py changed, reloading.
+INFO 2025-07-12 17:31:34,975 autoreload 16548 6504 Watching for file changes with StatReloader
+INFO 2025-07-12 17:32:15,838 autoreload 20096 10264 Watching for file changes with StatReloader
+INFO 2025-07-12 17:32:32,615 autoreload 20096 10264 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\core\__init__.py changed, reloading.
+INFO 2025-07-12 17:32:34,905 autoreload 12108 1220 Watching for file changes with StatReloader
+INFO 2025-07-12 17:33:40,936 autoreload 2124 9136 Watching for file changes with StatReloader
+INFO 2025-07-12 17:34:05,672 autoreload 2124 9136 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\core\monitoring.py changed, reloading.
+INFO 2025-07-12 17:34:07,358 autoreload 8492 15896 Watching for file changes with StatReloader
+INFO 2025-07-12 17:34:25,541 autoreload 8492 15896 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\core\monitoring.py changed, reloading.
+INFO 2025-07-12 17:34:27,315 autoreload 19128 11964 Watching for file changes with StatReloader
+INFO 2025-07-12 17:34:48,989 autoreload 19128 11964 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\core\monitoring.py changed, reloading.
+INFO 2025-07-12 17:34:50,668 autoreload 2768 13856 Watching for file changes with StatReloader
+INFO 2025-07-12 17:35:04,576 autoreload 2768 13856 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\core\monitoring.py changed, reloading.
+INFO 2025-07-12 17:35:06,307 autoreload 13128 6448 Watching for file changes with StatReloader
+INFO 2025-07-12 17:35:22,338 autoreload 13128 6448 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\core\monitoring.py changed, reloading.
+INFO 2025-07-12 17:35:23,995 autoreload 11660 19448 Watching for file changes with StatReloader
+INFO 2025-07-12 17:41:19,717 autoreload 14168 11856 Watching for file changes with StatReloader
+INFO 2025-07-12 17:42:12,193 autoreload 14168 11856 C:\Users\lopol\Videos\Proyectos\Orta Novias\core\settings.py changed, reloading.
+INFO 2025-07-12 17:42:15,291 autoreload 17708 17200 Watching for file changes with StatReloader
+INFO 2025-07-12 17:46:41,953 autoreload 8972 11832 Watching for file changes with StatReloader

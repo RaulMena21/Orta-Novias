@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Calendar, Clock, MapPin, Phone, Mail, Star, Heart, Award, CheckCircle, Loader, Users, AlertCircle } from 'lucide-react';
 import { appointmentService } from '../services/appointments';
 import { formSubmissionRateLimiter } from '../utils/rateLimiter';
+import SEO from '../components/SEO';
 
 // Funciones de validación y sanitización
 const sanitizeInput = (input: string): string => {
@@ -346,6 +347,9 @@ const AppointmentsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#F8F5F2] to-[#FAF7F4]">
+      {/* SEO Component */}
+      <SEO />
+      
       {/* Encabezado cálido y personal */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">

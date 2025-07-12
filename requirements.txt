@@ -15,6 +15,10 @@ celery==5.3.4
 django-redis==5.4.0
 dj-database-url==2.1.0
 
+# System monitoring
+psutil==6.1.0
+django-model-utils==5.0.0
+
 # Security packages
 django-ratelimit==4.1.0
 django-security==0.21.0

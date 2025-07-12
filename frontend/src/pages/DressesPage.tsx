@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, Filter, Grid, List, Search, X, Calendar, Tag
 import type { Dress } from '../types';
 import { getDresses } from '../services/dresses';
 import EnhancedGallery from '../components/EnhancedGallery';
+import SEOComponent from '../components/SEO';
 
 const DressesPage: React.FC = () => {
   const [dresses, setDresses] = useState<Dress[]>([]);
@@ -154,7 +155,16 @@ const DressesPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF7F4]">
+    <>
+      <SEOComponent 
+        title="Colección Vestidos de Novia Madrid | Orta Novias - Diseños Exclusivos"
+        description="Descubre nuestra exclusiva colección de vestidos de novia en Madrid. Vestidos clásicos, modernos, bohemios y minimalistas. Diseños únicos para tu día especial."
+        keywords="vestidos de novia Madrid, colección vestidos novia, vestidos clásicos, vestidos modernos, vestidos bohemios, diseños exclusivos novia, tienda vestidos Madrid"
+        type="website"
+        image="https://ortanovias.com/images/coleccion-vestidos-novia.jpg"
+      />
+      
+      <div className="min-h-screen bg-[#FAF7F4]">
       {/* Error Message */}
       {error && (
         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mx-4 mt-4">
@@ -627,7 +637,8 @@ const DressesPage: React.FC = () => {
         onClose={closeEnhancedGallery}
         initialIndex={currentImageIndex}
       />
-    </div>
+      </div>
+    </>
   );
 };
 

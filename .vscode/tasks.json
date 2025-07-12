@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "SEO Audit",
+			"type": "shell",
+			"command": "python manage.py seo_optimizer --audit-seo",
+			"group": "build",
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

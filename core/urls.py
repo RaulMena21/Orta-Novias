@@ -19,6 +19,10 @@ from django.urls import path, include
 from django.http import JsonResponse
 from django.conf import settings
 from django.conf.urls.static import static
+# Importar vistas de monitoreo
+from backend.apps.core.monitoring import health_check, detailed_health_check, metrics_endpoint
+# Importar vistas de SEO
+from backend.apps.core.seo import sitemap_xml, robots_txt, structured_data_json
 
 def api_root(request):
     """Vista simple para la raíz que muestra información de la API"""
@@ -28,16 +32,29 @@ def api_root(request):
         'endpoints': {
             'admin': '/admin/',
             'api': '/api/',
-            'dresses': '/api/dresses/',
-            'testimonials': '/api/testimonials/',
-            'appointments': '/api/appointments/',
-        }
+            'health': '/api/health/',
+            'metrics': '/api/metrics/',
+            'monitoring': '/api/monitoring/'
+        },
+        'documentation': '/api/docs/'
     })
 
 urlpatterns = [
-    path('', api_root, name='api_root'),  # Ruta raíz
     path('admin/', admin.site.urls),
+    path('', api_root, name='api_root'),
+    
+    # API endpoints
     path('api/', include('backend.api_urls')),
+    
+    # Health checks y monitoreo
+    path('api/health/', health_check, name='health_check'),
+    path('api/monitoring/', detailed_health_check, name='detailed_health_check'), 
+    path('api/metrics/', metrics_endpoint, name='metrics_endpoint'),
+    
+    # SEO URLs
+    path('sitemap.xml', sitemap_xml, name='sitemap'),
+    path('robots.txt', robots_txt, name='robots'),
+    path('structured-data/<str:page>/', structured_data_json, name='structured_data'),
 ]
 
 # Servir archivos de media en desarrollo
