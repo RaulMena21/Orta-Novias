@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { Icon } from 'leaflet';
-import { MapPin, Navigation, Layers, Phone, Mail, Clock, Maximize2 } from 'lucide-react';
+import { MapPin, Navigation, Phone, Mail, Clock } from 'lucide-react';
 import 'leaflet/dist/leaflet.css';
 
 // Configurar el icono del marker personalizado
@@ -28,15 +28,12 @@ const MapController: React.FC<{ view: 'street' | 'satellite' }> = ({ view }) => 
 
 interface EnhancedMapProps {
   className?: string;
-  showControls?: boolean;
 }
 
 const EnhancedMap: React.FC<EnhancedMapProps> = ({ 
-  className = '', 
-  showControls = true 
+  className = '' 
 }) => {
-  const [mapView, setMapView] = useState<'street' | 'satellite'>('street');
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [mapView] = useState<'street' | 'satellite'>('street');
   
   // Coordenadas exactas para Calle Gorrión 13, Puerto Serrano, Cádiz
   // Coordenadas del centro de Puerto Serrano ajustadas para la calle específica
@@ -51,8 +48,8 @@ const EnhancedMap: React.FC<EnhancedMapProps> = ({
 
   return (
     <>
-      <div className={`interactive-map-container ${className} ${isFullscreen ? 'fixed inset-0 z-50 bg-black bg-opacity-50' : ''}`}>
-        <div className={`relative ${isFullscreen ? 'absolute inset-4 bg-white rounded-lg overflow-hidden' : 'w-full h-full'}`}>
+      <div className={`interactive-map-container ${className}`}>
+        <div className="relative w-full h-full">
 
           <MapContainer
             center={position}
@@ -60,7 +57,7 @@ const EnhancedMap: React.FC<EnhancedMapProps> = ({
             style={{ height: '100%', width: '100%' }}
             className="rounded-lg"
             zoomControl={true}
-            scrollWheelZoom={isFullscreen}
+            scrollWheelZoom={false}
           >
             <MapController view={mapView} />
             <TileLayer

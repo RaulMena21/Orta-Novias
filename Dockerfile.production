@@ -1,0 +1,75 @@
+# Multi-stage Dockerfile para Producción
+FROM node:18-alpine AS frontend-builder
+
+# Configurar directorio de trabajo para frontend
+WORKDIR /app/frontend
+
+# Copiar archivos de configuración
+COPY frontend/package*.json ./
+
+# Instalar dependencias
+RUN npm ci --only=production && npm cache clean --force
+
+# Copiar código fuente
+COPY frontend/ ./
+
+# Construir aplicación optimizada para producción
+RUN npm run build
+
+# Etapa de producción para Django
+FROM python:3.11-slim AS production
+
+# Variables de entorno para optimización
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# Instalar dependencias del sistema
+RUN apt-get update && apt-get install -y \
+    gcc \
+    libc6-dev \
+    libpq-dev \
+    gettext \
+    postgresql-client \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Crear usuario no-root
+RUN groupadd -r django && useradd -r -g django django
+
+# Configurar directorio de trabajo
+WORKDIR /app
+
+# Copiar requirements y instalar dependencias Python
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Crear directorios necesarios
+RUN mkdir -p /app/static /app/media /app/logs && \
+    chown -R django:django /app
+
+# Copiar código fuente del backend
+COPY --chown=django:django . .
+
+# Copiar archivos estáticos del frontend construido
+COPY --from=frontend-builder --chown=django:django /app/frontend/dist /app/static/frontend/
+
+# Configurar permisos
+RUN chown -R django:django /app
+
+# Cambiar a usuario no-root
+USER django
+
+# Recopilar archivos estáticos
+RUN python manage.py collectstatic --noinput --settings=core.settings_prod
+
+# Exponer puerto
+EXPOSE 8000
+
+# Healthcheck
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8000/health/ || exit 1
+
+# Comando de entrada
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "--worker-class", "gevent", "--worker-connections", "1000", "--max-requests", "1000", "--preload", "core.wsgi:application"]

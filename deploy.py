@@ -56,26 +56,75 @@ class OrtaNoviasDeployer:
         """Configurar archivos de entorno"""
         print("🔧 Configurando archivos de entorno...")
         
-        # Crear .env si no existe
-        env_file = self.project_root / '.env'
-        env_example = self.project_root / '.env.example'
+        # Verificar qué tipo de despliegue es
+        is_production = input("¿Es este un despliegue de PRODUCCIÓN? (y/N): ").lower().startswith('y')
         
-        if not env_file.exists() and env_example.exists():
-            print("📝 Creando archivo .env desde .env.example...")
-            with open(env_example, 'r') as f:
-                content = f.read()
+        if is_production:
+            # Configuración para producción
+            env_file = self.project_root / '.env.production'
+            env_example = self.project_root / '.env.example'
             
-            with open(env_file, 'w') as f:
-                f.write(content)
+            if not env_file.exists():
+                print("📝 Creando archivo .env.production desde .env.example...")
+                with open(env_example, 'r') as f:
+                    content = f.read()
+                
+                # Convertir a configuración de producción
+                production_content = content.replace(
+                    'ENVIRONMENT=development', 'ENVIRONMENT=production'
+                ).replace(
+                    'DJANGO_DEBUG=True', 'DJANGO_DEBUG=False'
+                ).replace(
+                    'DATABASE_URL=sqlite:///db.sqlite3', 
+                    'DATABASE_URL=postgresql://ortauser_prod:CAMBIAR_PASSWORD@db:5432/ortanovias_prod'
+                ).replace(
+                    'SECURE_SSL_REDIRECT=False', 'SECURE_SSL_REDIRECT=True'
+                ).replace(
+                    'SESSION_COOKIE_SECURE=False', 'SESSION_COOKIE_SECURE=True'
+                ).replace(
+                    'CSRF_COOKIE_SECURE=False', 'CSRF_COOKIE_SECURE=True'
+                ).replace(
+                    'USE_S3=False', 'USE_S3=True'
+                ).replace(
+                    'USE_CLOUDFLARE=False', 'USE_CLOUDFLARE=True'
+                ).replace(
+                    'BACKUP_ENABLED=False', 'BACKUP_ENABLED=True'
+                )
+                
+                with open(env_file, 'w') as f:
+                    f.write(production_content)
+                
+                print("⚠️  IMPORTANTE: Edita el archivo .env.production con tus configuraciones reales")
+                print("   Variables críticas a configurar:")
+                print("   - DJANGO_SECRET_KEY (ya generada)")
+                print("   - POSTGRES_PASSWORD")
+                print("   - EMAIL_HOST_PASSWORD (SendGrid API Key)")
+                print("   - AWS_ACCESS_KEY_ID y AWS_SECRET_ACCESS_KEY")
+                print("   - CLOUDFLARE_API_TOKEN y CLOUDFLARE_ZONE_ID")
+                print("   - SENTRY_DSN")
+                print("   - GOOGLE_ANALYTICS_ID")
+                print("   - WHATSAPP_API_TOKEN")
+                
+                input("Presiona Enter cuando hayas configurado .env.production...")
+        else:
+            # Configuración para desarrollo
+            env_file = self.project_root / '.env'
+            env_example = self.project_root / '.env.example'
             
-            print("⚠️  IMPORTANTE: Edita el archivo .env con tus configuraciones reales")
-            print("   Especialmente:")
-            print("   - SECRET_KEY")
-            print("   - DATABASE_URL")
-            print("   - CLOUDFLARE_API_TOKEN")
-            print("   - Email settings")
-            
-            input("Presiona Enter cuando hayas configurado el archivo .env...")
+            if not env_file.exists():
+                print("📝 Creando archivo .env para desarrollo...")
+                with open(env_example, 'r') as f:
+                    content = f.read()
+                
+                with open(env_file, 'w') as f:
+                    f.write(content)
+                
+                print("✅ Archivo .env creado para desarrollo local")
+                print("   Configuraciones por defecto:")
+                print("   - SQLite database")
+                print("   - DEBUG=True")
+                print("   - Console email backend")
+                print("   - Sin SSL/HTTPS")
         
         return True
     

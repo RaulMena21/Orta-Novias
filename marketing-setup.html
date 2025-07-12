@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Setup Marketing Orta Novias</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            border-radius: 10px;
+            color: white;
+        }
+        .step {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid #007bff;
+        }
+        .step h3 {
+            color: #007bff;
+            margin-top: 0;
+        }
+        .btn {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 10px 10px 10px 0;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .btn-success {
+            background: #28a745;
+        }
+        .btn-warning {
+            background: #ffc107;
+            color: #333;
+        }
+        .checklist {
+            background: #e8f5e8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .input-group {
+            margin: 15px 0;
+        }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .code-block {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        .status-pending {
+            color: #ffc107;
+        }
+        .status-done {
+            color: #28a745;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Configuración de Marketing</h1>
+            <h2>Orta Novias - Setup de Cuentas</h2>
+            <p>Guía interactiva para configurar todas las herramientas de marketing</p>
+        </div>
+
+        <!-- Google Analytics 4 -->
+        <div class="step">
+            <h3>📊 1. Google Analytics 4</h3>
+            <p><strong>Objetivo:</strong> Analizar el tráfico web y comportamiento de usuarios</p>
+            
+            <div class="checklist">
+                <h4>Pasos a seguir:</h4>
+                <label><input type="checkbox"> Ir a Google Analytics</label><br>
+                <label><input type="checkbox"> Crear cuenta "Orta Novias"</label><br>
+                <label><input type="checkbox"> Configurar propiedad web</label><br>
+                <label><input type="checkbox"> Copiar Measurement ID</label><br>
+            </div>
+
+            <a href="https://analytics.google.com/" target="_blank" class="btn">🚀 Crear Google Analytics</a>
+            
+            <div class="input-group">
+                <label>Measurement ID (formato: G-XXXXXXXXXX):</label>
+                <input type="text" id="ga-id" placeholder="G-ABC123DEF4" />
+            </div>
+        </div>
+
+        <!-- Facebook Pixel -->
+        <div class="step">
+            <h3>📘 2. Facebook Business Manager</h3>
+            <p><strong>Objetivo:</strong> Retargeting y campañas en Facebook/Instagram</p>
+            
+            <div class="checklist">
+                <h4>Pasos a seguir:</h4>
+                <label><input type="checkbox"> Crear Business Manager</label><br>
+                <label><input type="checkbox"> Crear página de Facebook</label><br>
+                <label><input type="checkbox"> Conectar Instagram</label><br>
+                <label><input type="checkbox"> Crear Facebook Pixel</label><br>
+            </div>
+
+            <a href="https://business.facebook.com/" target="_blank" class="btn">🚀 Crear Facebook Business</a>
+            
+            <div class="input-group">
+                <label>Facebook Pixel ID (15-16 dígitos):</label>
+                <input type="text" id="fb-pixel" placeholder="123456789012345" />
+            </div>
+        </div>
+
+        <!-- Google Ads -->
+        <div class="step">
+            <h3>🎯 3. Google Ads</h3>
+            <p><strong>Objetivo:</strong> Publicidad en Google y tracking de conversiones</p>
+            
+            <div class="checklist">
+                <h4>Pasos a seguir:</h4>
+                <label><input type="checkbox"> Crear cuenta de Google Ads</label><br>
+                <label><input type="checkbox"> Configurar conversión "Cita Agendada"</label><br>
+                <label><input type="checkbox"> Copiar Conversion ID</label><br>
+            </div>
+
+            <a href="https://ads.google.com/" target="_blank" class="btn">🚀 Crear Google Ads</a>
+            
+            <div class="input-group">
+                <label>Google Ads Conversion ID (formato: AW-XXXXXXXXXX):</label>
+                <input type="text" id="ads-id" placeholder="AW-123456789" />
+            </div>
+        </div>
+
+        <!-- Hotjar -->
+        <div class="step">
+            <h3>🔥 4. Hotjar</h3>
+            <p><strong>Objetivo:</strong> Heatmaps y análisis de comportamiento de usuarios</p>
+            
+            <div class="checklist">
+                <h4>Pasos a seguir:</h4>
+                <label><input type="checkbox"> Crear cuenta gratuita</label><br>
+                <label><input type="checkbox"> Añadir sitio web</label><br>
+                <label><input type="checkbox"> Copiar Site ID</label><br>
+            </div>
+
+            <a href="https://www.hotjar.com/" target="_blank" class="btn">🚀 Crear Hotjar</a>
+            
+            <div class="input-group">
+                <label>Hotjar Site ID (6-7 dígitos):</label>
+                <input type="text" id="hotjar-id" placeholder="1234567" />
+            </div>
+        </div>
+
+        <!-- Google Search Console -->
+        <div class="step">
+            <h3>🔍 5. Google Search Console</h3>
+            <p><strong>Objetivo:</strong> SEO y monitoreo del posicionamiento en Google</p>
+            
+            <a href="https://search.google.com/search-console/" target="_blank" class="btn">🚀 Configurar Search Console</a>
+            
+            <div class="checklist">
+                <p><strong>Configuración:</strong></p>
+                <ul>
+                    <li>Añadir propiedad: https://www.ortanovias.com</li>
+                    <li>Verificar propiedad con meta tag HTML</li>
+                    <li>Enviar sitemap: https://www.ortanovias.com/sitemap.xml</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Generador de .env -->
+        <div class="step">
+            <h3>⚙️ 6. Generar Variables de Entorno</h3>
+            <p>Una vez que tengas todos los IDs, haz clic para generar el archivo .env</p>
+            
+            <button onclick="generateEnvFile()" class="btn btn-success">📝 Generar Archivo .env</button>
+            
+            <div id="env-output" class="code-block" style="display: none;">
+                <h4>Contenido para .env.production:</h4>
+                <pre id="env-content"></pre>
+            </div>
+        </div>
+
+        <!-- Cuentas adicionales -->
+        <div class="grid">
+            <div class="step">
+                <h3>📌 Pinterest Business</h3>
+                <a href="https://business.pinterest.com/" target="_blank" class="btn btn-warning">Crear Pinterest</a>
+            </div>
+            
+            <div class="step">
+                <h3>🎵 TikTok Business</h3>
+                <a href="https://ads.tiktok.com/" target="_blank" class="btn btn-warning">Crear TikTok Ads</a>
+            </div>
+        </div>
+
+        <!-- Status final -->
+        <div class="step">
+            <h3>✅ Estado de Configuración</h3>
+            <div id="status-summary">
+                <p>🔍 <span id="status-ga" class="status-pending">Google Analytics: Pendiente</span></p>
+                <p>📘 <span id="status-fb" class="status-pending">Facebook Pixel: Pendiente</span></p>
+                <p>🎯 <span id="status-ads" class="status-pending">Google Ads: Pendiente</span></p>
+                <p>🔥 <span id="status-hotjar" class="status-pending">Hotjar: Pendiente</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Validar IDs cuando se escriben
+        document.getElementById('ga-id').addEventListener('input', function() {
+            const value = this.value;
+            const status = document.getElementById('status-ga');
+            if (value.startsWith('G-') && value.length >= 10) {
+                status.textContent = 'Google Analytics: ✅ Configurado';
+                status.className = 'status-done';
+            } else {
+                status.textContent = 'Google Analytics: Pendiente';
+                status.className = 'status-pending';
+            }
+        });
+
+        document.getElementById('fb-pixel').addEventListener('input', function() {
+            const value = this.value;
+            const status = document.getElementById('status-fb');
+            if (value.length >= 15 && /^\d+$/.test(value)) {
+                status.textContent = 'Facebook Pixel: ✅ Configurado';
+                status.className = 'status-done';
+            } else {
+                status.textContent = 'Facebook Pixel: Pendiente';
+                status.className = 'status-pending';
+            }
+        });
+
+        document.getElementById('ads-id').addEventListener('input', function() {
+            const value = this.value;
+            const status = document.getElementById('status-ads');
+            if (value.startsWith('AW-') && value.length >= 12) {
+                status.textContent = 'Google Ads: ✅ Configurado';
+                status.className = 'status-done';
+            } else {
+                status.textContent = 'Google Ads: Pendiente';
+                status.className = 'status-pending';
+            }
+        });
+
+        document.getElementById('hotjar-id').addEventListener('input', function() {
+            const value = this.value;
+            const status = document.getElementById('status-hotjar');
+            if (value.length >= 6 && /^\d+$/.test(value)) {
+                status.textContent = 'Hotjar: ✅ Configurado';
+                status.className = 'status-done';
+            } else {
+                status.textContent = 'Hotjar: Pendiente';
+                status.className = 'status-pending';
+            }
+        });
+
+        function generateEnvFile() {
+            const gaId = document.getElementById('ga-id').value || 'G-XXXXXXXXXX';
+            const fbPixel = document.getElementById('fb-pixel').value || 'XXXXXXXXXXXXXXXXX';
+            const adsId = document.getElementById('ads-id').value || 'AW-XXXXXXXXXX';
+            const hotjarId = document.getElementById('hotjar-id').value || 'XXXXXXX';
+
+            const envContent = `# 🎯 Marketing Configuration - Orta Novias
+# Generado el: ${new Date().toLocaleString()}
+
+# Google Analytics 4
+VITE_GA_MEASUREMENT_ID=${gaId}
+
+# Facebook Pixel
+VITE_FACEBOOK_PIXEL_ID=${fbPixel}
+
+# Google Ads
+VITE_GOOGLE_ADS_CONVERSION_ID=${adsId}
+
+# Hotjar
+VITE_HOTJAR_SITE_ID=${hotjarId}
+
+# Optional: Analytics Debug Mode
+VITE_ANALYTICS_DEBUG=false
+
+# Environment
+VITE_ENVIRONMENT=production`;
+
+            document.getElementById('env-content').textContent = envContent;
+            document.getElementById('env-output').style.display = 'block';
+            
+            // Scroll to output
+            document.getElementById('env-output').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

@@ -6,10 +6,7 @@ import {
   Eye, 
   TrendingUp, 
   Target,
-  MousePointer,
-  DollarSign,
-  Activity,
-  Clock
+  MousePointer
 } from 'lucide-react';
 import { getAnalyticsDashboard, getBusinessInsights, type AnalyticsDashboard, type BusinessInsights } from '../services/analytics';
 

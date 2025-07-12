@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin, Phone, Mail, Star, Heart, Award, CheckCircle, Loader, Users, AlertCircle } from 'lucide-react';
 import { appointmentService } from '../services/appointments';
 import { formSubmissionRateLimiter } from '../utils/rateLimiter';

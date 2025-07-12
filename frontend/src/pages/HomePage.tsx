@@ -548,7 +548,7 @@ const HomePage: React.FC = () => {
                   <h3 className="text-2xl font-semibold mb-6 text-[#8A2E3B]">Mapa de Ubicación</h3>
                   
                   <div className="h-80 rounded-lg overflow-hidden shadow-inner">
-                    <EnhancedMap className="w-full h-full" showControls={true} />
+                    <EnhancedMap className="w-full h-full" />
                   </div>
                   
                   <div className="mt-4 text-center">
