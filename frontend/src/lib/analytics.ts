@@ -43,7 +43,7 @@ class Analytics {
 
   constructor() {
     this.config = {
-      measurementId: import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-XXXXXXXXXX',
+      measurementId: 'G-JTHPB8J5L7', // Orta Novias Measurement ID
       debug: import.meta.env.DEV || false,
       cookieFlags: 'SameSite=None; Secure'
     };
