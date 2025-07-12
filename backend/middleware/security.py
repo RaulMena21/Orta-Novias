@@ -187,6 +187,10 @@ class CSRFSecurityMiddleware(MiddlewareMixin):
         if request.method in ['GET', 'HEAD', 'OPTIONS']:
             return None
         
+        # En desarrollo, permitir todos los orígenes
+        if settings.DEBUG:
+            return None
+            
         # Skip para usuarios autenticados con token válido
         if hasattr(request, 'user') and not isinstance(request.user, AnonymousUser):
             return None

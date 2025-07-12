@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recordatorio de Cita - Orta Novias</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff9800;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+        }
+        .reminder-badge {
+            background-color: #ff9800;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .content {
+            margin-bottom: 30px;
+        }
+        .greeting {
+            font-size: 18px;
+            color: #ff9800;
+            margin-bottom: 15px;
+        }
+        .appointment-details {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 5px 0;
+        }
+        .detail-label {
+            font-weight: bold;
+            color: #555;
+        }
+        .detail-value {
+            color: #333;
+        }
+        .highlight {
+            background-color: #ff9800;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .countdown {
+            text-align: center;
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .countdown-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .countdown-subtext {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .footer {
+            text-align: center;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #ff9800;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            margin: 15px 5px;
+        }
+        .button-secondary {
+            background-color: #666;
+        }
+        .urgent-note {
+            background-color: #ffebee;
+            border: 1px solid #e57373;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .urgent-note h4 {
+            color: #d32f2f;
+            margin-top: 0;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+            .detail-row {
+                flex-direction: column;
+            }
+            .detail-label {
+                margin-bottom: 5px;
+            }
+            .countdown-text {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">👰 Orta Novias</div>
+            <div class="subtitle">Tu momento especial merece la perfección</div>
+        </div>
+        
+        <div style="text-align: center;">
+            <span class="reminder-badge">🔔 RECORDATORIO DE CITA</span>
+        </div>
+        
+        <div class="content">
+            <div class="greeting">¡Hola {{ user.first_name }}!</div>
+            
+            <div class="countdown">
+                <div class="countdown-text">⏰ ¡Tu cita es {% if hours_before == 24 %}mañana{% else %}en {{ hours_before }} horas{% endif %}!</div>
+                <div class="countdown-subtext">No olvides asistir a tu cita programada</div>
+            </div>
+            
+            <p>Te recordamos que tienes una cita programada con nosotros. ¡Estamos emocionadas de verte y ayudarte a encontrar el vestido perfecto!</p>
+            
+            <div class="appointment-details">
+                <h3 style="margin-top: 0; color: #ff9800;">📅 Detalles de tu Cita</h3>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Fecha:</span>
+                    <span class="detail-value highlight">{{ formatted_date }}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Hora:</span>
+                    <span class="detail-value highlight">{{ formatted_time }}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Servicio:</span>
+                    <span class="detail-value">{{ appointment.service_type }}</span>
+                </div>
+                
+                {% if appointment.notes %}
+                <div class="detail-row">
+                    <span class="detail-label">Notas:</span>
+                    <span class="detail-value">{{ appointment.notes }}</span>
+                </div>
+                {% endif %}
+            </div>
+            
+            {% if hours_before == 24 %}
+            <div class="urgent-note">
+                <h4>📝 Preparativos para mañana:</h4>
+                <ul style="text-align: left; display: inline-block;">
+                    <li>Confirma tu asistencia</li>
+                    <li>Prepara los zapatos y ropa interior adecuada</li>
+                    <li>Coordina con tus acompañantes</li>
+                    <li>Planifica tu llegada 10 minutos antes</li>
+                </ul>
+            </div>
+            {% endif %}
+            
+            <p style="text-align: center;">
+                <a href="#" class="button">Confirmar Asistencia</a>
+                <a href="#" class="button button-secondary">Reprogramar Cita</a>
+            </p>
+            
+            <p><strong>¿Necesitas reprogramar?</strong><br>
+            Si no puedes asistir, por favor contáctanos lo antes posible para reprogramar tu cita:</p>
+            <ul>
+                <li>📞 Teléfono: +34 XXX XXX XXX</li>
+                <li>📧 Email: info@ortanovias.com</li>
+                <li>💬 WhatsApp: +34 XXX XXX XXX</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p><strong>Orta Novias</strong><br>
+            Dirección de la tienda<br>
+            Ciudad, Código Postal</p>
+            
+            <p style="font-size: 12px; color: #999;">
+                Este es un recordatorio automático de tu cita programada.<br>
+                Si ya no deseas recibir recordatorios, contáctanos.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

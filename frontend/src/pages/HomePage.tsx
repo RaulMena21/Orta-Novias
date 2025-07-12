@@ -575,6 +575,7 @@ const HomePage: React.FC = () => {
                   <li><Link to="/dresses" className="hover:text-white transition-colors">Vestidos</Link></li>
                   <li><Link to="/appointments" className="hover:text-white transition-colors">Citas</Link></li>
                   <li><Link to="/testimonials" className="hover:text-white transition-colors">Testimonios</Link></li>
+                  <li><Link to="/notifications" className="hover:text-white transition-colors text-xs opacity-75">Notificaciones</Link></li>
                 </ul>
               </div>
               

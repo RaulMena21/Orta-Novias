@@ -1,0 +1,41 @@
+RECORDATORIO DE CITA - Orta Novias
+
+¡Hola {{ user.first_name }}!
+
+🔔 RECORDATORIO: ¡Tu cita es {% if hours_before == 24 %}mañana{% else %}en {{ hours_before }} horas{% endif %}!
+
+Te recordamos que tienes una cita programada con nosotros. ¡Estamos emocionadas de verte y ayudarte a encontrar el vestido perfecto!
+
+DETALLES DE TU CITA:
+====================
+Fecha: {{ formatted_date }}
+Hora: {{ formatted_time }}
+Servicio: {{ appointment.service_type }}
+{% if appointment.notes %}Notas: {{ appointment.notes }}{% endif %}
+
+{% if hours_before == 24 %}
+PREPARATIVOS PARA MAÑANA:
+========================
+- Confirma tu asistencia
+- Prepara los zapatos y ropa interior adecuada
+- Coordina con tus acompañantes
+- Planifica tu llegada 10 minutos antes
+{% endif %}
+
+¿NECESITAS REPROGRAMAR?
+======================
+Si no puedes asistir, por favor contáctanos lo antes posible:
+
+Teléfono: +34 XXX XXX XXX
+Email: info@ortanovias.com
+WhatsApp: +34 XXX XXX XXX
+
+¡Te esperamos!
+
+---
+Orta Novias
+Dirección de la tienda
+Ciudad, Código Postal
+
+Este es un recordatorio automático de tu cita programada.
+Si ya no deseas recibir recordatorios, contáctanos.

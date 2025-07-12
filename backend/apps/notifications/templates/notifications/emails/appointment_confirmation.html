@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Cita - Orta Novias</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #e91e63;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e91e63;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+        }
+        .content {
+            margin-bottom: 30px;
+        }
+        .greeting {
+            font-size: 18px;
+            color: #e91e63;
+            margin-bottom: 15px;
+        }
+        .appointment-details {
+            background-color: #f8f9fa;
+            border-left: 4px solid #e91e63;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 5px 0;
+        }
+        .detail-label {
+            font-weight: bold;
+            color: #555;
+        }
+        .detail-value {
+            color: #333;
+        }
+        .highlight {
+            background-color: #e91e63;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #e91e63;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .tips {
+            background-color: #fff3e0;
+            border: 1px solid #ffb74d;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .tips h4 {
+            color: #f57c00;
+            margin-top: 0;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+            .detail-row {
+                flex-direction: column;
+            }
+            .detail-label {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">👰 Orta Novias</div>
+            <div class="subtitle">Tu momento especial merece la perfección</div>
+        </div>
+        
+        <div class="content">
+            <div class="greeting">¡Hola {{ user.first_name }}!</div>
+            
+            <p>Nos complace confirmar que tu cita ha sido <strong>programada exitosamente</strong>. Estamos emocionadas de ayudarte a encontrar el vestido perfecto para tu día especial.</p>
+            
+            <div class="appointment-details">
+                <h3 style="margin-top: 0; color: #e91e63;">📅 Detalles de tu Cita</h3>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Fecha:</span>
+                    <span class="detail-value highlight">{{ formatted_date }}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Hora:</span>
+                    <span class="detail-value highlight">{{ formatted_time }}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Servicio:</span>
+                    <span class="detail-value">{{ appointment.service_type }}</span>
+                </div>
+                
+                {% if appointment.notes %}
+                <div class="detail-row">
+                    <span class="detail-label">Notas:</span>
+                    <span class="detail-value">{{ appointment.notes }}</span>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="tips">
+                <h4>💡 Consejos para tu visita:</h4>
+                <ul>
+                    <li>Llega 10 minutos antes de tu cita</li>
+                    <li>Trae zapatos con tacón similar al que usarás en tu boda</li>
+                    <li>Usa ropa interior del color que planeas usar</li>
+                    <li>Trae a máximo 3 acompañantes para una mejor experiencia</li>
+                    <li>Si necesitas cambiar tu cita, contáctanos con al menos 24h de anticipación</li>
+                </ul>
+            </div>
+            
+            <p style="text-align: center;">
+                <a href="#" class="button">Ver mi Panel de Citas</a>
+            </p>
+            
+            <p>Si tienes alguna pregunta o necesitas hacer cambios, no dudes en contactarnos:</p>
+            <ul>
+                <li>📞 Teléfono: +34 XXX XXX XXX</li>
+                <li>📧 Email: info@ortanovias.com</li>
+                <li>💬 WhatsApp: +34 XXX XXX XXX</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p><strong>Orta Novias</strong><br>
+            Dirección de la tienda<br>
+            Ciudad, Código Postal</p>
+            
+            <p style="font-size: 12px; color: #999;">
+                Has recibido este email porque tienes una cita programada con nosotros.<br>
+                Si no esperabas este email, por favor contáctanos inmediatamente.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

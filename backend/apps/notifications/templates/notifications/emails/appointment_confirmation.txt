@@ -1,0 +1,36 @@
+Confirmación de Cita - Orta Novias
+
+¡Hola {{ user.first_name }}!
+
+Nos complace confirmar que tu cita ha sido programada exitosamente. Estamos emocionadas de ayudarte a encontrar el vestido perfecto para tu día especial.
+
+DETALLES DE TU CITA:
+====================
+Fecha: {{ formatted_date }}
+Hora: {{ formatted_time }}
+Servicio: {{ appointment.service_type }}
+{% if appointment.notes %}Notas: {{ appointment.notes }}{% endif %}
+
+CONSEJOS PARA TU VISITA:
+========================
+- Llega 10 minutos antes de tu cita
+- Trae zapatos con tacón similar al que usarás en tu boda
+- Usa ropa interior del color que planeas usar
+- Trae a máximo 3 acompañantes para una mejor experiencia
+- Si necesitas cambiar tu cita, contáctanos con al menos 24h de anticipación
+
+CONTACTO:
+=========
+Teléfono: +34 XXX XXX XXX
+Email: info@ortanovias.com
+WhatsApp: +34 XXX XXX XXX
+
+¡Estamos deseando verte pronto!
+
+---
+Orta Novias
+Dirección de la tienda
+Ciudad, Código Postal
+
+Has recibido este email porque tienes una cita programada con nosotros.
+Si no esperabas este email, por favor contáctanos inmediatamente.
