@@ -1126,3 +1126,17 @@ INFO 2025-07-12 17:41:19,717 autoreload 14168 11856 Watching for file changes wi
 INFO 2025-07-12 17:42:12,193 autoreload 14168 11856 C:\Users\lopol\Videos\Proyectos\Orta Novias\core\settings.py changed, reloading.
 INFO 2025-07-12 17:42:15,291 autoreload 17708 17200 Watching for file changes with StatReloader
 INFO 2025-07-12 17:46:41,953 autoreload 8972 11832 Watching for file changes with StatReloader
+INFO 2025-07-12 18:09:40,691 autoreload 8972 11832 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\api_urls.py changed, reloading.
+INFO 2025-07-12 18:09:46,549 autoreload 9664 19832 Watching for file changes with StatReloader
+INFO 2025-07-12 18:09:57,435 autoreload 9664 19832 C:\Users\lopol\Videos\Proyectos\Orta Novias\core\settings.py changed, reloading.
+INFO 2025-07-12 18:09:59,710 autoreload 15220 13276 Watching for file changes with StatReloader
+INFO 2025-07-12 18:13:28,785 autoreload 15220 13276 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\analytics\models.py changed, reloading.
+INFO 2025-07-12 18:13:30,686 autoreload 18164 20200 Watching for file changes with StatReloader
+INFO 2025-07-12 18:13:36,005 autoreload 18164 20200 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\analytics\models.py changed, reloading.
+INFO 2025-07-12 18:13:37,145 autoreload 8816 16260 Watching for file changes with StatReloader
+INFO 2025-07-12 18:13:42,585 autoreload 8816 16260 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\analytics\models.py changed, reloading.
+INFO 2025-07-12 18:13:43,765 autoreload 11780 2832 Watching for file changes with StatReloader
+INFO 2025-07-12 18:13:49,327 autoreload 11780 2832 C:\Users\lopol\Videos\Proyectos\Orta Novias\backend\apps\analytics\models.py changed, reloading.
+INFO 2025-07-12 18:13:51,040 autoreload 12860 6724 Watching for file changes with StatReloader
+INFO 2025-07-12 18:24:22,846 autoreload 12860 6724 C:\Users\lopol\Videos\Proyectos\Orta Novias\core\settings.py changed, reloading.
+INFO 2025-07-12 18:24:25,417 autoreload 14176 5408 Watching for file changes with StatReloader

@@ -4,6 +4,8 @@ import { Calendar, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { BrideTestimonial } from '../types';
 import { getTestimonials } from '../services/testimonials';
 import SEO from '../components/SEO';
+import { useAnalyticsContext } from '../components/AnalyticsProvider';
+import { useConversionTracking } from '../hooks/useAnalytics';
 
 const TestimonialsPage: React.FC = () => {
   const [testimonials, setTestimonials] = useState<BrideTestimonial[]>([]);
@@ -11,6 +13,18 @@ const TestimonialsPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const testimonialsPerPage = 6;
+
+  // Analytics hooks
+  const { trackEvent } = useAnalyticsContext();
+  const { trackTestimonialEngagement, trackAppointmentIntent } = useConversionTracking();
+
+  // Track page entry
+  useEffect(() => {
+    trackEvent('testimonials_page_view', {
+      category: 'page_views',
+      page_type: 'testimonials'
+    });
+  }, [trackEvent]);
 
   // Cargar testimonios del backend
   useEffect(() => {
@@ -36,10 +50,37 @@ const TestimonialsPage: React.FC = () => {
     fetchTestimonials();
   }, []);
 
-  // Paginación
+  // Paginación con analytics
   const totalPages = Math.ceil(testimonials.length / testimonialsPerPage);
   const startIndex = (currentPage - 1) * testimonialsPerPage;
   const currentTestimonials = testimonials.slice(startIndex, startIndex + testimonialsPerPage);
+
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+    trackEvent('testimonials_pagination', {
+      category: 'user_interaction',
+      page_number: newPage,
+      total_pages: totalPages
+    });
+  };
+
+  const handleAppointmentClick = (source: string) => {
+    trackAppointmentIntent(source);
+    trackEvent('appointment_cta_click', {
+      category: 'conversions',
+      source: source,
+      page: 'testimonials'
+    });
+  };
+
+  const handleTestimonialView = (testimonial: BrideTestimonial) => {
+    trackTestimonialEngagement(testimonial.id.toString(), 'view');
+    trackEvent('testimonial_viewed', {
+      category: 'content_engagement',
+      testimonial_id: testimonial.id,
+      bride_name: testimonial.bride_name
+    });
+  };
 
   if (loading) {
     return (
@@ -58,7 +99,6 @@ const TestimonialsPage: React.FC = () => {
       <SEO
         title="Testimonios de Novias | Orta Novias"
         description="Descubre las experiencias reales de las novias que confiaron en Orta Novias. Lee sus testimonios y vive la elegancia y confianza que ofrecemos."
-        url="/testimonials"
         image="/path-to-your-default-image.jpg"
       />
 
@@ -112,6 +152,7 @@ const TestimonialsPage: React.FC = () => {
             <p className="text-gray-600 mb-6">Aún no tenemos testimonios que mostrar, pero pronto tendremos experiencias increíbles que compartir.</p>
             <Link 
               to="/appointments"
+              onClick={() => handleAppointmentClick('empty_state')}
               className="inline-block bg-[#8A2E3B] text-white px-6 py-3 rounded-lg hover:bg-[#7A2635] transition-colors duration-300"
             >
               Sé la primera en compartir tu experiencia
@@ -123,7 +164,11 @@ const TestimonialsPage: React.FC = () => {
         {testimonials.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {currentTestimonials.map((testimonial) => (
-              <div key={testimonial.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 border border-gray-100">
+              <div 
+                key={testimonial.id} 
+                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 border border-gray-100"
+                onClick={() => handleTestimonialView(testimonial)}
+              >
                 <div className="relative">
                   <img
                     src={testimonial.image}
@@ -178,7 +223,7 @@ const TestimonialsPage: React.FC = () => {
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-4">
             <button
-              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+              onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
               disabled={currentPage === 1}
               className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors duration-300"
             >
@@ -190,7 +235,7 @@ const TestimonialsPage: React.FC = () => {
               {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
                 <button
                   key={page}
-                  onClick={() => setCurrentPage(page)}
+                  onClick={() => handlePageChange(page)}
                   className={`w-10 h-10 rounded-lg transition-colors duration-300 ${
                     currentPage === page
                       ? 'bg-[#8A2E3B] text-white'
@@ -203,7 +248,7 @@ const TestimonialsPage: React.FC = () => {
             </div>
             
             <button
-              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+              onClick={() => handlePageChange(Math.min(currentPage + 1, totalPages))}
               disabled={currentPage === totalPages}
               className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors duration-300"
             >
@@ -225,6 +270,7 @@ const TestimonialsPage: React.FC = () => {
           </p>
           <Link 
             to="/appointments"
+            onClick={() => handleAppointmentClick('cta_section')}
             className="inline-block bg-white text-[#8A2E3B] px-8 py-4 rounded-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
             Agendar Mi Cita

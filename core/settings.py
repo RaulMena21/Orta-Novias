@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     'backend.apps.testimonials',
     'backend.apps.notifications',
     'backend.apps.core',
+    'backend.apps.analytics',
     'rest_framework',
 ]
 

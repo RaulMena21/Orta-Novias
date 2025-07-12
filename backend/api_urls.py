@@ -26,4 +26,6 @@ urlpatterns += [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     # Notifications API
     path('', include('backend.apps.notifications.urls')),
+    # Analytics API
+    path('analytics/', include('backend.apps.analytics.urls')),
 ]
