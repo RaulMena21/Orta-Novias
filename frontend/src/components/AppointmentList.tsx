@@ -9,8 +9,8 @@ const AppointmentList: React.FC = () => {
 
   useEffect(() => {
     getAppointments()
-      .then(data => setAppointments(data))
-      .catch((err) => {
+      .then((data: Appointment[]) => setAppointments(data))
+      .catch((err: Error) => {
         // Mostrar el error real si existe
         if (err instanceof Error && err.message) {
           setError(`Error al cargar las citas: ${err.message}`);

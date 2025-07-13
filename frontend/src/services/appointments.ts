@@ -3,6 +3,7 @@ import apiClient from './api';
 export interface Appointment {
   id: number;
   user: number;
+  name?: string; // Nombre del cliente
   date: string;
   time: string;
   notes?: string;
@@ -87,3 +88,6 @@ export const appointmentService = {
     return response.data as Appointment;
   }
 };
+
+// Export individual functions for convenience
+export const getAppointments = appointmentService.getAppointments;
