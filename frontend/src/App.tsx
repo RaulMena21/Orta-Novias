@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
+// import { HelmetProvider } from 'react-helmet-async';
 import { AuthProvider } from './hooks/useAuth';
 import { AnalyticsProvider } from './components/AnalyticsProvider';
 import Navbar from './components/Navbar';
@@ -23,7 +23,7 @@ function App() {
   }, []);
 
   return (
-    <HelmetProvider>
+    // <HelmetProvider>
       <AnalyticsProvider>
         <AuthProvider>
           <Router>
@@ -56,7 +56,7 @@ function App() {
           </Router>
         </AuthProvider>
       </AnalyticsProvider>
-    </HelmetProvider>
+    // </HelmetProvider>
   );
 }
 
