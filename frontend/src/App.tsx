@@ -14,12 +14,9 @@ import AppointmentsPage from './pages/AppointmentsPage';
 import NotificationsPage from './pages/NotificationsPage';
 import AuthPage from './pages/AuthPage';
 import NotFoundPage from './pages/NotFoundPage';
-import { marketingManager } from './lib/marketing';
 
 function App() {
   useEffect(() => {
-    // Initialize marketing services
-    marketingManager.initialize();
   }, []);
 
   return (
@@ -39,11 +36,7 @@ function App() {
               } />
               <Route path="/dresses" element={<DressesPage />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
-              <Route path="/appointments" element={
-                <ProtectedRoute>
-                  <AppointmentsPage />
-                </ProtectedRoute>
-              } />
+              <Route path="/appointments" element={<AppointmentsPage />} />
               <Route path="/notifications" element={
                 <ProtectedRoute>
                   <NotificationsPage />

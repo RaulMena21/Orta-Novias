@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { useMarketing } from '../lib/marketing';
+import { useMarketing } from '../lib/marketing.tss';
 
 interface SocialMediaProps {
   shareUrl?: string;
