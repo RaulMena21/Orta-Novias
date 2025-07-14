@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+/*import { useLocation } from 'react-router-dom';
 import { useMemo } from 'react';
 import seoContent from '../data/seo-content.json';
 
@@ -241,4 +241,4 @@ export const useBreadcrumbs = () => {
   return breadcrumbs;
 };
 
-export default useSEO;
+export default useSEO;*/

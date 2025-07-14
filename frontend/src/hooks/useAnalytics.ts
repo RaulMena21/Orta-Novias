@@ -11,7 +11,7 @@ import {
 
 // Hook for automatic page view tracking
 export const usePageTracking = () => {
-  const location = useLocation();
+ // const location = useLocation();
   const navigationType = useNavigationType();
   const previousLocation = useRef<string>('');
 

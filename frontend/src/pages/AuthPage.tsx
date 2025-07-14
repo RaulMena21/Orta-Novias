@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/*import React, { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, AlertCircle } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
@@ -414,4 +414,4 @@ const AuthPage: React.FC = () => {
   );
 };
 
-export default AuthPage;
+export default AuthPage;*/

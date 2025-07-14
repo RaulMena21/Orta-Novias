@@ -9,7 +9,7 @@ const navItems = [
 ];
 
 export const MobileMenu: React.FC = () => {
-  const location = useLocation();
+  //const location = useLocation();
   const [open, setOpen] = React.useState(false);
   return (
     <>

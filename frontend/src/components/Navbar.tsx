@@ -5,7 +5,7 @@ import { MobileMenu } from "./MobileMenu";
 
 
 const Navbar: React.FC = () => {
-  const location = useLocation();
+  //const location = useLocation();
 
   return (
     <nav className={`w-full bg-gradient-to-br from-[#FAF6EE] via-[#F8F2E6] to-[#F5EDE0] border-b-2 border-[#D4B483] shadow-soft px-6 py-1 flex flex-col items-center fixed top-0 left-0 z-50 font-sans gap-4 transition-transform duration-300 ease-in-out overflow-hidden`} 
