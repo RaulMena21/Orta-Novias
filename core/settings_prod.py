@@ -42,6 +42,7 @@ LOCAL_APPS = [
     'backend.apps.appointments',
     'backend.apps.testimonials',
     'backend.apps.notifications',
+    'backend.apps.analytics',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -277,22 +278,23 @@ os.makedirs(BASE_DIR / 'logs', exist_ok=True)
 
 # Sentry Configuration (Error Tracking)
 if config('SENTRY_DSN', default=None):
-    import sentry_sdk
-    from sentry_sdk.integrations.django import DjangoIntegration
-    from sentry_sdk.integrations.redis import RedisIntegration
-    
-    sentry_sdk.init(
-        dsn=config('SENTRY_DSN'),
-        integrations=[
-            DjangoIntegration(
-                transaction_style='url',
-            ),
-            RedisIntegration(),
-        ],
-        traces_sample_rate=0.1,
-        send_default_pii=True,
-        environment='production',
-    )
+    # import sentry_sdk
+    # from sentry_sdk.integrations.django import DjangoIntegration
+    # from sentry_sdk.integrations.redis import RedisIntegration
+    # 
+    # sentry_sdk.init(
+    #     dsn=config('SENTRY_DSN'),
+    #     integrations=[
+    #         DjangoIntegration(
+    #             transaction_style='url',
+    #         ),
+    #         RedisIntegration(),
+    #     ],
+    #     traces_sample_rate=0.1,
+    #     send_default_pii=True,
+    #     environment='production',
+    # )
+    pass
 
 # Rate Limiting
 RATELIMIT_ENABLE = True
